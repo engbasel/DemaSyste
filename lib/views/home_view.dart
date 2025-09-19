@@ -3,6 +3,7 @@ import 'package:dema/views/Dashboard/DashboardContent.dart';
 import 'package:dema/views/Rooms/RoomsView.dart';
 import 'package:dema/views/Settings/SettingsView.dart';
 import 'package:dema/views/Navbar/SideNavigationBar.dart';
+import 'package:dema/views/calender/CalendarView.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatefulWidget {
@@ -68,27 +69,5 @@ class _HomeViewState extends State<HomeView> {
         },
       ),
     );
-  }
-}
-
-class PlaceholderView extends StatelessWidget {
-  const PlaceholderView({super.key, required this.title});
-
-  final String title;
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(title)),
-      body: Center(child: Text(title)),
-    );
-  }
-}
-
-class CalendarView extends StatelessWidget {
-  const CalendarView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }
