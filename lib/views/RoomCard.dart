@@ -1,17 +1,16 @@
-// A single Room Card Widget
 import 'package:dema/views/RoomStatusChip.dart';
 import 'package:dema/views/Room_model.dart';
 import 'package:flutter/material.dart';
 
 class RoomCard extends StatelessWidget {
-  final Room room;
+  final RoomModel room;
 
   const RoomCard({super.key, required this.room});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 200, // Fixed width for each card
+      width: 200,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
@@ -48,11 +47,14 @@ class RoomCard extends StatelessWidget {
                 const SizedBox(height: 8),
                 Row(
                   children: [
-                    Text(
-                      '${room.roomType} • ',
-                      style: const TextStyle(
-                        fontSize: 12,
-                        color: Color(0xFF64748B),
+                    Expanded(
+                      child: Text(
+                        '${room.roomType} • ',
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: Color(0xFF64748B),
+                        ),
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     RoomStatusChip(status: room.status),
