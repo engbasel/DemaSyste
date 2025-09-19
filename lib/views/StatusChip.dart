@@ -1,5 +1,5 @@
 // ويدجت لعرض حالة الحجز كشارة ملونة
-import 'package:dema/views/Booking.dart';
+import 'package:dema/views/booking_model.dart';
 import 'package:flutter/material.dart';
 
 class StatusChip extends StatelessWidget {

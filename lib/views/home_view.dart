@@ -1,4 +1,7 @@
+import 'package:dema/views/BookingsView.dart';
 import 'package:dema/views/DashboardContent.dart';
+import 'package:dema/views/RoomsView.dart';
+import 'package:dema/views/SettingsView.dart';
 import 'package:dema/views/SideNavigationBar.dart';
 import 'package:flutter/material.dart';
 
@@ -15,10 +18,10 @@ class _HomeViewState extends State<HomeView> {
   // List of widgets to display based on the selected index
   static const List<Widget> _widgetOptions = <Widget>[
     DashboardContent(),
-    PlaceholderView(title: 'Calendar'),
-    PlaceholderView(title: 'Bookings'),
-    PlaceholderView(title: 'Rooms'),
-    PlaceholderView(title: 'Settings'),
+    CalendarView(),
+    BookingsView(),
+    RoomsView(),
+    SettingsView(),
   ];
 
   void _onItemTapped(int index) {
@@ -78,5 +81,14 @@ class PlaceholderView extends StatelessWidget {
       appBar: AppBar(title: Text(title)),
       body: Center(child: Text(title)),
     );
+  }
+}
+
+class CalendarView extends StatelessWidget {
+  const CalendarView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }

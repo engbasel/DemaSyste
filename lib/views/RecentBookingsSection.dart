@@ -1,5 +1,5 @@
 // ويدجت قسم الحجوزات الأخيرة
-import 'package:dema/views/Booking.dart';
+import 'package:dema/views/booking_model.dart';
 import 'package:dema/views/StatusChip.dart';
 import 'package:flutter/material.dart';
 
