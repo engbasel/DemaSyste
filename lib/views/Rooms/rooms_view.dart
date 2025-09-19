@@ -48,7 +48,7 @@ class _RoomsViewState extends State<RoomsView> {
             _buildFilterBar(),
             const SizedBox(height: 24),
             const Text(
-              'Properties',
+              'الوحدات العقارية',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -68,7 +68,7 @@ class _RoomsViewState extends State<RoomsView> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         const Text(
-          'Properties',
+          'الوحدات العقارية',
           style: TextStyle(
             fontSize: 28,
             fontWeight: FontWeight.bold,
@@ -85,7 +85,7 @@ class _RoomsViewState extends State<RoomsView> {
               borderRadius: BorderRadius.circular(8),
             ),
           ),
-          child: const Text('Add Property'),
+          child: const Text('إضافة وحدة'),
         ),
       ],
     );
@@ -102,7 +102,7 @@ class _RoomsViewState extends State<RoomsView> {
       child: const TextField(
         decoration: InputDecoration(
           icon: Icon(Icons.search, color: Color(0xFF94A3B8)),
-          hintText: 'Search by unit number',
+          hintText: 'البحث برقم الوحدة',
           border: InputBorder.none,
           hintStyle: TextStyle(color: Color(0xFF94A3B8)),
         ),
@@ -283,34 +283,35 @@ class _RoomsViewState extends State<RoomsView> {
           ],
         ),
         const SizedBox(height: 12),
-        Text("Price Range: ${minPrice.round()} - ${maxPrice.round()} SAR"),
-        RangeSlider(
-          values: RangeValues(minPrice, maxPrice),
-          min: 2000,
-          max: 10000,
-          divisions: 8,
-          onChanged: (RangeValues values) {
-            setState(() {
-              minPrice = values.start;
-              maxPrice = values.end;
-            });
-          },
-        ),
-        const SizedBox(height: 8),
-        DropdownButtonFormField<String>(
-          initialValue: sortOption,
-          decoration: const InputDecoration(
-            border: OutlineInputBorder(),
-            labelText: "ترتيب",
-          ),
-          items: [
-            "Default",
-            "Floor",
-            "Price",
-            "Status",
-          ].map((e) => DropdownMenuItem(value: e, child: Text(e))).toList(),
-          onChanged: (val) => setState(() => sortOption = val!),
-        ),
+
+        // Text("Price Range: ${minPrice.round()} - ${maxPrice.round()} SAR"),
+        // RangeSlider(
+        //   values: RangeValues(minPrice, maxPrice),
+        //   min: 2000,
+        //   max: 10000,
+        //   divisions: 8,
+        //   onChanged: (RangeValues values) {
+        //     setState(() {
+        //       minPrice = values.start;
+        //       maxPrice = values.end;
+        //     });
+        //   },
+        // ),
+        // const SizedBox(height: 8),
+        // DropdownButtonFormField<String>(
+        //   initialValue: sortOption,
+        //   decoration: const InputDecoration(
+        //     border: OutlineInputBorder(),
+        //     labelText: "ترتيب",
+        //   ),
+        //   items: [
+        //     "Default",
+        //     "Floor",
+        //     "Price",
+        //     "Status",
+        //   ].map((e) => DropdownMenuItem(value: e, child: Text(e))).toList(),
+        //   onChanged: (val) => setState(() => sortOption = val!),
+        // ),
       ],
     );
   }
