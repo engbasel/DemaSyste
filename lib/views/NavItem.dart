@@ -7,6 +7,7 @@ class NavItem extends StatelessWidget {
   final bool isSelected;
 
   const NavItem({
+    super.key,
     required this.icon,
     required this.title,
     this.isSelected = false,
