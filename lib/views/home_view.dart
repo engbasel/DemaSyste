@@ -2,30 +2,81 @@ import 'package:dema/views/DashboardContent.dart';
 import 'package:dema/views/SideNavigationBar.dart';
 import 'package:flutter/material.dart';
 
-// Main function to run the app
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
   @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  int _selectedIndex = 0;
+
+  // List of widgets to display based on the selected index
+  static const List<Widget> _widgetOptions = <Widget>[
+    DashboardContent(),
+    PlaceholderView(title: 'Calendar'),
+    PlaceholderView(title: 'Bookings'),
+    PlaceholderView(title: 'Rooms'),
+    PlaceholderView(title: 'Settings'),
+  ];
+
+  void _onItemTapped(int index) {
+    // Check to avoid navigating to settings from the bottom of the bar
+    if (index < 4) {
+      setState(() {
+        _selectedIndex = index;
+      });
+    } else {
+      // Handle settings navigation separately if needed, for now it's just another screen
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    // For responsive layout, we can use LayoutBuilder
     return Scaffold(
       body: LayoutBuilder(
         builder: (context, constraints) {
           if (constraints.maxWidth < 800) {
-            // Mobile layout with a Drawer
-            return const DashboardContent(); // Simplified for mobile for now
+            // Mobile layout would typically use a Drawer and AppBar
+            return Scaffold(
+              appBar: AppBar(title: const Text('StayEasy')),
+              drawer: SideNavigationBar(
+                selectedIndex: _selectedIndex,
+                onItemSelected: _onItemTapped,
+              ),
+              body: _widgetOptions.elementAt(_selectedIndex),
+            );
           } else {
             // Desktop/Tablet layout
             return Row(
-              children: const [
-                SideNavigationBar(),
-                Expanded(child: DashboardContent()),
+              children: [
+                SideNavigationBar(
+                  selectedIndex: _selectedIndex,
+                  onItemSelected: _onItemTapped,
+                ),
+                Expanded(child: _widgetOptions.elementAt(_selectedIndex)),
               ],
             );
           }
         },
       ),
+    );
+  }
+}
+
+class PlaceholderView extends StatelessWidget {
+  const PlaceholderView({super.key, required this.title});
+
+  final String title;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(title)),
+      body: Center(child: Text(title)),
     );
   }
 }

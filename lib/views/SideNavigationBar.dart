@@ -1,9 +1,14 @@
-// الويدجت الخاصة بقائمة التنقل الجانبية
-import 'package:dema/views/NavItem.dart';
 import 'package:flutter/material.dart';
 
 class SideNavigationBar extends StatelessWidget {
-  const SideNavigationBar({super.key});
+  final int selectedIndex;
+  final Function(int) onItemSelected;
+
+  const SideNavigationBar({
+    super.key,
+    required this.selectedIndex,
+    required this.onItemSelected,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +30,6 @@ class SideNavigationBar extends StatelessWidget {
                     color: Color(0xFF1E293B),
                     shape: BoxShape.circle,
                   ),
-                  // You can add an icon or logo here
                 ),
                 const SizedBox(width: 12),
                 const Text(
@@ -39,17 +43,89 @@ class SideNavigationBar extends StatelessWidget {
               ],
             ),
           ),
-          NavItem(
+          _NavItem(
             icon: Icons.dashboard_rounded,
             title: 'Dashboard',
-            isSelected: true,
+            isSelected: selectedIndex == 0,
+            onTap: () => onItemSelected(0),
           ),
-          NavItem(icon: Icons.calendar_today_rounded, title: 'Calendar'),
-          NavItem(icon: Icons.book_online_rounded, title: 'Bookings'),
-          NavItem(icon: Icons.room_service_rounded, title: 'Rooms'),
+          _NavItem(
+            icon: Icons.calendar_today_rounded,
+            title: 'Calendar',
+            isSelected: selectedIndex == 1,
+            onTap: () => onItemSelected(1),
+          ),
+          _NavItem(
+            icon: Icons.book_online_rounded,
+            title: 'Bookings',
+            isSelected: selectedIndex == 2,
+            onTap: () => onItemSelected(2),
+          ),
+          _NavItem(
+            icon: Icons.room_service_rounded,
+            title: 'Rooms',
+            isSelected: selectedIndex == 3,
+            onTap: () => onItemSelected(3),
+          ),
           const Spacer(),
-          NavItem(icon: Icons.settings_rounded, title: 'Settings'),
+          _NavItem(
+            icon: Icons.settings_rounded,
+            title: 'Settings',
+            isSelected: selectedIndex == 4,
+            onTap: () => onItemSelected(4),
+          ),
         ],
+      ),
+    );
+  }
+}
+
+class _NavItem extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final bool isSelected;
+  final VoidCallback onTap;
+
+  const _NavItem({
+    required this.icon,
+    required this.title,
+    required this.isSelected,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(8),
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+        decoration: BoxDecoration(
+          color: isSelected ? const Color(0xFFEFF6FF) : Colors.transparent,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Row(
+          children: [
+            Icon(
+              icon,
+              color: isSelected
+                  ? const Color(0xFF2563EB)
+                  : const Color(0xFF64748B),
+              size: 20,
+            ),
+            const SizedBox(width: 16),
+            Text(
+              title,
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                color: isSelected
+                    ? const Color(0xFF2563EB)
+                    : const Color(0xFF334155),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
