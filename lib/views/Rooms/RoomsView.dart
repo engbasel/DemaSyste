@@ -1,6 +1,6 @@
-import 'package:dema/views/RoomCard.dart';
-import 'package:dema/views/RoomDetailsView.dart';
-import 'package:dema/views/Room_model.dart';
+import 'package:dema/views/Rooms/RoomCard.dart';
+import 'package:dema/views/Rooms/RoomDetailsView.dart';
+import 'package:dema/views/Rooms/Room_model.dart';
 import 'package:flutter/material.dart';
 
 class RoomsView extends StatefulWidget {

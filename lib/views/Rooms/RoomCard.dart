@@ -1,5 +1,5 @@
-import 'package:dema/views/RoomStatusChip.dart';
-import 'package:dema/views/Room_model.dart';
+import 'package:dema/views/Rooms/RoomStatusChip.dart';
+import 'package:dema/views/Rooms/Room_model.dart';
 import 'package:flutter/material.dart';
 
 class RoomCard extends StatelessWidget {

@@ -1,5 +1,6 @@
+import 'package:dema/views/Rooms/RoomStatusChip.dart';
 import 'package:flutter/material.dart';
-import 'package:dema/views/Room_model.dart';
+import 'package:dema/views/Rooms/Room_model.dart';
 
 class RoomDetailsView extends StatelessWidget {
   final RoomModel room;
@@ -64,7 +65,7 @@ class RoomDetailsView extends StatelessWidget {
                           color: Color(0xFF64748B),
                         ),
                       ),
-                      _RoomStatusChip(status: room.status),
+                      RoomStatusChip(status: room.status),
                     ],
                   ),
 
@@ -336,47 +337,6 @@ class RoomDetailsView extends StatelessWidget {
             style: const TextStyle(fontSize: 12, color: Colors.black87),
           ),
         ],
-      ),
-    );
-  }
-}
-
-// Chip الحالة
-class _RoomStatusChip extends StatelessWidget {
-  final RoomStatus status;
-  const _RoomStatusChip({required this.status});
-
-  @override
-  Widget build(BuildContext context) {
-    String text;
-    Color color;
-    switch (status) {
-      case RoomStatus.available:
-        text = 'Available';
-        color = const Color(0xFF10B981);
-        break;
-      case RoomStatus.occupied:
-        text = 'Occupied';
-        color = const Color(0xFFEF4444);
-        break;
-      case RoomStatus.needsCleaning:
-        text = 'Needs Cleaning';
-        color = const Color(0xFFF59E0B);
-        break;
-    }
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Text(
-        text,
-        style: TextStyle(
-          color: color,
-          fontWeight: FontWeight.w600,
-          fontSize: 12,
-        ),
       ),
     );
   }

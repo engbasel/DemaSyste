@@ -1,8 +1,8 @@
-import 'package:dema/views/BookingsView.dart';
-import 'package:dema/views/DashboardContent.dart';
-import 'package:dema/views/RoomsView.dart';
-import 'package:dema/views/SettingsView.dart';
-import 'package:dema/views/SideNavigationBar.dart';
+import 'package:dema/views/booking/BookingsView.dart';
+import 'package:dema/views/Dashboard/DashboardContent.dart';
+import 'package:dema/views/Rooms/RoomsView.dart';
+import 'package:dema/views/Settings/SettingsView.dart';
+import 'package:dema/views/Navbar/SideNavigationBar.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatefulWidget {

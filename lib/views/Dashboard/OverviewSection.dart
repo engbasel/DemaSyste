@@ -1,5 +1,5 @@
 // ويدجت قسم النظرة العامة
-import 'package:dema/views/StatCard.dart' show StatCard;
+import 'package:dema/views/Rooms/StatCard.dart' show StatCard;
 import 'package:flutter/material.dart';
 
 class OverviewSection extends StatelessWidget {
