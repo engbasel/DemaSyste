@@ -72,7 +72,7 @@ class _BookingsViewState extends State<BookingsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC), // لون الخلفية العام
+      backgroundColor: Colors.white, // لون الخلفية العام
       appBar: AppBar(
         title: const Text(
           'الحجوزات',

@@ -61,11 +61,14 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
+
       body: LayoutBuilder(
         builder: (context, constraints) {
           if (constraints.maxWidth < 800) {
             // Mobile layout would typically use a Drawer and AppBar
             return Scaffold(
+              backgroundColor: Colors.white,
               appBar: AppBar(title: const Text('StayEasy')),
               drawer: SideNavigationBar(
                 selectedIndex: _selectedIndex,

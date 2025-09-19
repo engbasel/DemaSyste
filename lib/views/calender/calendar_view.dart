@@ -83,7 +83,7 @@ class _CalendarViewState extends State<CalendarView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF1F5F9),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("تقويم الحجوزات"),
         backgroundColor: Colors.white,
@@ -92,6 +92,8 @@ class _CalendarViewState extends State<CalendarView> {
       body: Column(
         children: [
           Card(
+            color: const Color(0xFFF1F5F9),
+
             margin: const EdgeInsets.all(12.0),
             elevation: 2,
             shape: RoundedRectangleBorder(
@@ -260,6 +262,8 @@ class _CalendarViewState extends State<CalendarView> {
     }
 
     return Card(
+      color: const Color(0xFFF1F5F9),
+
       margin: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0),
       child: ListTile(
         leading: CircleAvatar(

@@ -37,8 +37,10 @@ class _ResidentsViewState extends State<ResidentsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC),
+      backgroundColor: Colors.white,
+
       appBar: AppBar(
+        backgroundColor: const Color(0xFFF1F5F9),
         title: const Text(
           'إدارة المستأجرين',
           style: TextStyle(fontWeight: FontWeight.bold),
@@ -139,6 +141,8 @@ class _ResidentsViewState extends State<ResidentsView> {
   Widget _buildResidentCard(ResidentModel resident) {
     final bool isActive = resident.status == ResidentStatus.Active;
     return Card(
+      color: const Color(0xFFF1F5F9),
+
       margin: const EdgeInsets.only(bottom: 12),
       elevation: 1,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),

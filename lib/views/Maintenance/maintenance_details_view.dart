@@ -9,6 +9,8 @@ class MaintenanceDetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
+
       appBar: AppBar(
         title: Text('تفاصيل الطلب #${request.id}'),
         actions: [

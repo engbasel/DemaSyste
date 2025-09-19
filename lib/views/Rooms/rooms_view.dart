@@ -65,7 +65,7 @@ class _RoomsViewState extends State<RoomsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(24.0),
         child: Column(

@@ -31,8 +31,9 @@ class _OwnersViewState extends State<OwnersView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC),
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: const Color(0xFFF1F5F9),
         title: const Text(
           'إدارة الملاك',
           style: TextStyle(fontWeight: FontWeight.bold),
@@ -89,6 +90,8 @@ class _OwnersViewState extends State<OwnersView> {
 
   Widget _buildOwnerCard(Owner owner) {
     return Card(
+      color: const Color(0xFFF1F5F9),
+
       margin: const EdgeInsets.only(bottom: 12),
       elevation: 1,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),

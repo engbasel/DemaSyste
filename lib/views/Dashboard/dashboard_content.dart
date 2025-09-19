@@ -13,7 +13,8 @@ class DashboardContent extends StatelessWidget {
       // 👈 دعم الكتابة من اليمين لليسار
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        backgroundColor: const Color(0xFFF1F5F9), // خلفية رمادية فاتحة
+        
+              backgroundColor: Colors.white,
         body: SingleChildScrollView(
           padding: const EdgeInsets.all(24.0),
           child: Column(

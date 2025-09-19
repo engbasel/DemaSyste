@@ -11,7 +11,10 @@ class OwnerDetailsView extends StatelessWidget {
     return DefaultTabController(
       length: 4, // عدد التبويبات
       child: Scaffold(
+        backgroundColor: Colors.white,
+
         appBar: AppBar(
+          backgroundColor: const Color(0xFFF1F5F9),
           title: Text(owner.name),
           bottom: const TabBar(
             isScrollable: true,
@@ -44,6 +47,8 @@ class OwnerDetailsView extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       children: [
         Card(
+          color: const Color(0xFFF1F5F9),
+
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -67,6 +72,7 @@ class OwnerDetailsView extends StatelessWidget {
       itemBuilder: (context, index) {
         final unit = owner.ownedUnitNumbers[index];
         return Card(
+          color: const Color(0xFFF1F5F9),
           margin: const EdgeInsets.only(bottom: 8),
           child: ListTile(
             leading: const CircleAvatar(child: Icon(Icons.home)),

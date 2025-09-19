@@ -18,7 +18,7 @@ class _MaintenanceRequestsViewState extends State<MaintenanceRequestsView> {
     return DefaultTabController(
       length: 4, // عدد الحالات: جديد، قيد التنفيذ، مكتمل، ملغي
       child: Scaffold(
-        backgroundColor: const Color(0xFFF8FAFC),
+        backgroundColor: Colors.white,
         appBar: AppBar(
           title: const Text(
             'طلبات الصيانة',

@@ -14,6 +14,10 @@ class BookingDetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     // The rest of your build method remains the same...
     return Scaffold(
+
+
+            backgroundColor: Colors.white,
+
       appBar: AppBar(
         title: Text('الحجز لـ ${booking.guestName}'),
         actions: [

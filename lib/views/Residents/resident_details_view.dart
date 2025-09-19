@@ -11,6 +11,8 @@ class ResidentDetailsView extends StatelessWidget {
     return DefaultTabController(
       length: 5, // عدد التبويبات
       child: Scaffold(
+        backgroundColor: Colors.white,
+
         appBar: AppBar(
           title: Text(resident.name),
           bottom: const TabBar(

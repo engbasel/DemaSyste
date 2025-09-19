@@ -10,13 +10,14 @@ class RoomDetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
+
       appBar: AppBar(
         title: Text('Details for ${room.roomNumber}'),
-        backgroundColor: const Color(0xFFF8FAFC),
+        backgroundColor: Colors.white,
         elevation: 0,
         foregroundColor: const Color(0xFF1E293B),
       ),
-      backgroundColor: const Color(0xFFF8FAFC),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

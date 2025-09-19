@@ -69,7 +69,7 @@ class _FinancialReportsViewState extends State<FinancialReportsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
           'التقارير المالية',

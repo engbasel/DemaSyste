@@ -8,7 +8,9 @@ class SettingsView extends StatelessWidget {
     return DefaultTabController(
       length: 4, // عدد التبويبات
       child: Scaffold(
-        backgroundColor: const Color(0xFFF8FAFC),
+
+      backgroundColor: Colors.white,
+
         appBar: AppBar(
           title: const Text(
             'الإعدادات',
