@@ -1,4 +1,6 @@
+import 'package:dema/views/Financial/FinancialReportsView.dart';
 import 'package:dema/views/Maintenance/MaintenanceRequestsView.dart';
+import 'package:dema/views/Owners/OwnersView.dart';
 import 'package:dema/views/Residents/ResidentsView.dart';
 import 'package:dema/views/booking/BookingsView.dart';
 import 'package:dema/views/Dashboard/DashboardContent.dart';
@@ -32,6 +34,8 @@ class _HomeViewState extends State<HomeView> {
 
     // إدارة المستأجرين
     ResidentsView(),
+    // إدارة أصحاب الوحدات
+    OwnersView(),
     // طلبات الصيانة
     MaintenanceRequestsView(),
 
@@ -84,14 +88,5 @@ class _HomeViewState extends State<HomeView> {
         },
       ),
     );
-  }
-}
-
-class FinancialReportsView extends StatelessWidget {
-  const FinancialReportsView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text('التقارير المالية')));
   }
 }
