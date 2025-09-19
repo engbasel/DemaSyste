@@ -12,35 +12,35 @@ class RecentBookingsSection extends StatelessWidget {
     final List<Booking> recentBookings = [
       Booking(
         guestName: 'Lucas Bennett',
-        roomType: 'Deluxe Suite',
+        roomNumber: 'Deluxe Suite',
         checkIn: '2024-07-15',
         checkOut: '2024-07-20',
         status: BookingStatus.booked,
       ),
       Booking(
         guestName: 'Sophia Carter',
-        roomType: 'Standard Room',
+        roomNumber: 'Standard Room',
         checkIn: '2024-07-16',
         checkOut: '2024-07-18',
         status: BookingStatus.checkedIn,
       ),
       Booking(
         guestName: 'Owen Harper',
-        roomType: 'Family Room',
+        roomNumber: 'Family Room',
         checkIn: '2024-07-17',
         checkOut: '2024-07-22',
         status: BookingStatus.pending,
       ),
       Booking(
         guestName: 'Isabella Foster',
-        roomType: 'Executive Suite',
+        roomNumber: 'Executive Suite',
         checkIn: '2024-07-18',
         checkOut: '2024-07-25',
         status: BookingStatus.checkedOut,
       ),
       Booking(
         guestName: 'Jackson Walker',
-        roomType: 'Standard Room',
+        roomNumber: 'Standard Room',
         checkIn: '2024-07-19',
         checkOut: '2024-07-21',
         status: BookingStatus.noShow,
@@ -94,7 +94,7 @@ class RecentBookingsSection extends StatelessWidget {
                   ),
                   DataCell(
                     Text(
-                      booking.roomType,
+                      booking.roomNumber,
                       style: const TextStyle(color: Color(0xFF64748B)),
                     ),
                   ),
