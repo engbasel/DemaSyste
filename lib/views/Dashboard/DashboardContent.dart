@@ -1,7 +1,7 @@
 // الويدجت الخاصة بالمحتوى الرئيسي للوحة التحكم
 import 'package:dema/views/Dashboard/DashboardHeader.dart';
 import 'package:dema/views/Dashboard/OverviewSection.dart';
-import 'package:dema/views/booking/RecentBookingsSection.dart';
+import 'package:dema/views/Dashboard/RecentBookingsSection.dart';
 import 'package:flutter/material.dart';
 
 class DashboardContent extends StatelessWidget {
