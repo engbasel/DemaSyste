@@ -87,16 +87,22 @@ class SideNavigationBar extends StatelessWidget {
             onTap: () => onItemSelected(4),
           ),
           NavItem(
-            icon: Icons.build_rounded,
-            title: 'طلبات الصيانة',
+            icon: Icons.people_alt_rounded,
+            title: 'إدارة الملاك',
             isSelected: selectedIndex == 5,
             onTap: () => onItemSelected(5),
           ),
           NavItem(
-            icon: Icons.assessment_rounded,
-            title: 'التقارير المالية',
+            icon: Icons.build_rounded,
+            title: 'طلبات الصيانة',
             isSelected: selectedIndex == 6,
             onTap: () => onItemSelected(6),
+          ),
+          NavItem(
+            icon: Icons.assessment_rounded,
+            title: 'التقارير المالية',
+            isSelected: selectedIndex == 7,
+            onTap: () => onItemSelected(7),
           ),
 
           const Spacer(),
@@ -105,8 +111,8 @@ class SideNavigationBar extends StatelessWidget {
           NavItem(
             icon: Icons.settings_rounded,
             title: 'الإعدادات',
-            isSelected: selectedIndex == 7, // تم تحديث الرقم
-            onTap: () => onItemSelected(7),
+            isSelected: selectedIndex == 8, // تم تحديث الرقم
+            onTap: () => onItemSelected(8),
           ),
         ],
       ),
