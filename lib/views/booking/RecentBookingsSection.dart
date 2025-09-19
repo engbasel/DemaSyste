@@ -8,45 +8,6 @@ class RecentBookingsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Dummy data
-    final List<Booking> recentBookings = [
-      Booking(
-        guestName: 'Lucas Bennett',
-        roomNumber: 'Deluxe Suite',
-        checkIn: '2024-07-15',
-        checkOut: '2024-07-20',
-        status: BookingStatus.booked,
-      ),
-      Booking(
-        guestName: 'Sophia Carter',
-        roomNumber: 'Standard Room',
-        checkIn: '2024-07-16',
-        checkOut: '2024-07-18',
-        status: BookingStatus.checkedIn,
-      ),
-      Booking(
-        guestName: 'Owen Harper',
-        roomNumber: 'Family Room',
-        checkIn: '2024-07-17',
-        checkOut: '2024-07-22',
-        status: BookingStatus.pending,
-      ),
-      Booking(
-        guestName: 'Isabella Foster',
-        roomNumber: 'Executive Suite',
-        checkIn: '2024-07-18',
-        checkOut: '2024-07-25',
-        status: BookingStatus.checkedOut,
-      ),
-      Booking(
-        guestName: 'Jackson Walker',
-        roomNumber: 'Standard Room',
-        checkIn: '2024-07-19',
-        checkOut: '2024-07-21',
-        status: BookingStatus.noShow,
-      ),
-    ];
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -80,7 +41,7 @@ class RecentBookingsSection extends StatelessWidget {
               DataColumn(label: Text('Check-out')),
               DataColumn(label: Text('Status')),
             ],
-            rows: recentBookings.map((booking) {
+            rows: dummyBookings.map((booking) {
               return DataRow(
                 cells: [
                   DataCell(
@@ -100,13 +61,13 @@ class RecentBookingsSection extends StatelessWidget {
                   ),
                   DataCell(
                     Text(
-                      booking.checkIn,
+                      booking.checkInDate.toString(),
                       style: const TextStyle(color: Color(0xFF64748B)),
                     ),
                   ),
                   DataCell(
                     Text(
-                      booking.checkOut,
+                      booking.checkOutDate.toString(),
                       style: const TextStyle(color: Color(0xFF64748B)),
                     ),
                   ),
