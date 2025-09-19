@@ -13,15 +13,15 @@ class RoomStatusChip extends StatelessWidget {
 
     switch (status) {
       case RoomStatus.available:
-        text = 'Available';
+        text = 'متاح';
         color = const Color(0xFF10B981); // Green
         break;
       case RoomStatus.occupied:
-        text = 'Occupied';
+        text = 'مشغول';
         color = const Color(0xFFEF4444); // Red
         break;
       case RoomStatus.needsCleaning:
-        text = 'Needs Cleaning';
+        text = 'يتطلع التنظيف';
         color = const Color(0xFFF59E0B); // Amber
         break;
     }

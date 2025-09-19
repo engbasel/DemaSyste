@@ -150,10 +150,10 @@ class _RoomsViewState extends State<RoomsView> {
                   ),
                   child: Text(
                     room.status == RoomStatus.occupied
-                        ? "Collect Rent"
+                        ? "إجراء التحصيل"
                         : room.status == RoomStatus.needsCleaning
-                        ? "Mark Cleaned"
-                        : "Action",
+                        ? "وضع كتميز"
+                        : "إجراء",
                     style: const TextStyle(fontSize: 12),
                   ),
                 ),
@@ -170,15 +170,15 @@ class _RoomsViewState extends State<RoomsView> {
     Color color;
     switch (status) {
       case RoomStatus.available:
-        text = "Available";
+        text = "متاح";
         color = Colors.green;
         break;
       case RoomStatus.occupied:
-        text = "Occupied";
+        text = "مشغول";
         color = Colors.red;
         break;
       case RoomStatus.needsCleaning:
-        text = "Needs Cleaning";
+        text = "تتطلع";
         color = Colors.orange;
         break;
     }
@@ -239,10 +239,10 @@ class _RoomsViewState extends State<RoomsView> {
 
     return Row(
       children: [
-        _counterCard("Total", total, Colors.blue),
-        _counterCard("Available", available, Colors.green),
-        _counterCard("Occupied", occupied, Colors.red),
-        _counterCard("Needs Cleaning", needsCleaning, Colors.orange),
+        _counterCard("المجموع", total, Colors.blue),
+        _counterCard("متاح", available, Colors.green),
+        _counterCard("مشغول", occupied, Colors.red),
+        _counterCard("تتطلع", needsCleaning, Colors.orange),
       ],
     );
   }
@@ -255,10 +255,10 @@ class _RoomsViewState extends State<RoomsView> {
           children: [
             Expanded(
               child: DropdownButtonFormField<String>(
-                value: selectedStatus,
+                initialValue: selectedStatus,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: "Status",
+                  labelText: "الحالة",
                 ),
                 items: ["All", "Available", "Occupied", "Needs Cleaning"]
                     .map((e) => DropdownMenuItem(value: e, child: Text(e)))
@@ -269,10 +269,10 @@ class _RoomsViewState extends State<RoomsView> {
             const SizedBox(width: 8),
             Expanded(
               child: DropdownButtonFormField<String>(
-                value: selectedType,
+                initialValue: selectedType,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: "Type",
+                  labelText: "النوع",
                 ),
                 items: ["All", "Studio", "Standard", "Deluxe"]
                     .map((e) => DropdownMenuItem(value: e, child: Text(e)))
@@ -298,10 +298,10 @@ class _RoomsViewState extends State<RoomsView> {
         ),
         const SizedBox(height: 8),
         DropdownButtonFormField<String>(
-          value: sortOption,
+          initialValue: sortOption,
           decoration: const InputDecoration(
             border: OutlineInputBorder(),
-            labelText: "Sort By",
+            labelText: "ترتيب",
           ),
           items: [
             "Default",
