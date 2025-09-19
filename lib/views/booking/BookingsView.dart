@@ -1,4 +1,3 @@
-
 import 'package:dema/views/booking/BookingDetailsView.dart';
 import 'package:dema/views/booking/booking_model.dart';
 import 'package:flutter/material.dart';
@@ -71,7 +70,7 @@ class _BookingsViewState extends State<BookingsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
           'الحجوزات',
@@ -96,6 +95,7 @@ class _BookingsViewState extends State<BookingsView> {
           _buildFilterBar(),
           Expanded(
             child: Container(
+              decoration: BoxDecoration(color: Colors.white),
               width: double.infinity,
               padding: const EdgeInsets.all(16.0),
               child: Card(
@@ -245,6 +245,7 @@ class _BookingsViewState extends State<BookingsView> {
       'الإجراءات',
     ];
     return DataTable(
+      dataRowColor: WidgetStateProperty.all(Colors.white),
       columns: columns
           .map(
             (c) => DataColumn(
@@ -257,6 +258,7 @@ class _BookingsViewState extends State<BookingsView> {
           .toList(),
       rows: _filteredBookings.map((b) {
         return DataRow(
+          color: WidgetStateProperty.all(Colors.white),
           cells: [
             DataCell(Text(b.guestName)),
             DataCell(Text('${b.roomNumber} (${b.roomType})')),
@@ -281,10 +283,7 @@ class _BookingsViewState extends State<BookingsView> {
                   }
                 },
                 itemBuilder: (context) => [
-                  const PopupMenuItem(
-                    value: "details",
-                    child: Text("تفاصيل"),
-                  ),
+                  const PopupMenuItem(value: "details", child: Text("تفاصيل")),
                   const PopupMenuItem(
                     value: "checkin",
                     child: Text("تسجيل الدخول"),

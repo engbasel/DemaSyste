@@ -9,7 +9,7 @@ class BookingDetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Booking for ${booking.guestName}')),
+      appBar: AppBar(title: Text('الحجز ل ${booking.guestName}')),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
