@@ -1,5 +1,5 @@
-import 'package:dema/views/Residents/Resident.dart';
-import 'package:dema/views/Residents/ResidentDetailsView.dart';
+import 'package:dema/views/Residents/resident_model.dart';
+import 'package:dema/views/Residents/resident_details_view.dart';
 import 'package:flutter/material.dart';
 
 class ResidentsView extends StatefulWidget {
@@ -10,7 +10,7 @@ class ResidentsView extends StatefulWidget {
 }
 
 class _ResidentsViewState extends State<ResidentsView> {
-  late List<Resident> _filteredResidents;
+  late List<ResidentModel> _filteredResidents;
   String _searchQuery = '';
   ResidentStatus? _selectedStatus;
 
@@ -136,7 +136,7 @@ class _ResidentsViewState extends State<ResidentsView> {
     );
   }
 
-  Widget _buildResidentCard(Resident resident) {
+  Widget _buildResidentCard(ResidentModel resident) {
     final bool isActive = resident.status == ResidentStatus.Active;
     return Card(
       margin: const EdgeInsets.only(bottom: 12),

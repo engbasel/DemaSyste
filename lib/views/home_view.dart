@@ -1,13 +1,13 @@
-import 'package:dema/views/Financial/FinancialReportsView.dart';
-import 'package:dema/views/Maintenance/MaintenanceRequestsView.dart';
-import 'package:dema/views/Owners/OwnersView.dart';
-import 'package:dema/views/Residents/ResidentsView.dart';
-import 'package:dema/views/booking/BookingsView.dart';
-import 'package:dema/views/Dashboard/DashboardContent.dart';
-import 'package:dema/views/Rooms/RoomsView.dart';
-import 'package:dema/views/Settings/SettingsView.dart';
-import 'package:dema/views/Navbar/SideNavigationBar.dart';
-import 'package:dema/views/calender/CalendarView.dart';
+import 'package:dema/views/Financial/financial_reports_view.dart';
+import 'package:dema/views/Maintenance/maintenance_requests_view.dart';
+import 'package:dema/views/Owners/owners_view.dart';
+import 'package:dema/views/Residents/residents_view.dart';
+import 'package:dema/views/booking/bookings_view.dart';
+import 'package:dema/views/Dashboard/dashboard_content.dart';
+import 'package:dema/views/Rooms/rooms_view.dart';
+import 'package:dema/views/Settings/settings_view.dart';
+import 'package:dema/views/Navbar/side_navigation_bar.dart';
+import 'package:dema/views/calender/calendar_view.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatefulWidget {

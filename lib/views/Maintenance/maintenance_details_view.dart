@@ -1,9 +1,9 @@
-import 'package:dema/views/Maintenance/dummyMaintenanceRequestsmodel.dart';
+import 'package:dema/views/Maintenance/dummy_maintenance_requests_model.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class MaintenanceDetailsView extends StatelessWidget {
-  final MaintenanceRequest request;
+  final MaintenanceRequestModel request;
   const MaintenanceDetailsView({super.key, required this.request});
 
   @override

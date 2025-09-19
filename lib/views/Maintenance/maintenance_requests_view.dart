@@ -1,5 +1,5 @@
-import 'package:dema/views/Maintenance/MaintenanceDetailsView.dart';
-import 'package:dema/views/Maintenance/dummyMaintenanceRequestsmodel.dart';
+import 'package:dema/views/Maintenance/maintenance_details_view.dart';
+import 'package:dema/views/Maintenance/dummy_maintenance_requests_model.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -105,7 +105,7 @@ class _MaintenanceRequestsViewState extends State<MaintenanceRequestsView> {
   }
 
   // ويدجت لعرض بطاقة طلب صيانة واحد
-  Widget _buildRequestCard(MaintenanceRequest request) {
+  Widget _buildRequestCard(MaintenanceRequestModel request) {
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
       elevation: 1,

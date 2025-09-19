@@ -4,7 +4,7 @@ enum ResidentStatus {
   Inactive, // العقد منتهي
 }
 
-class Resident {
+class ResidentModel {
   final String id;
   final String name;
   final String phone;
@@ -22,7 +22,7 @@ class Resident {
   // Attachments (file names or URLs)
   final List<String> attachments;
 
-  Resident({
+  ResidentModel({
     required this.id,
     required this.name,
     required this.phone,
@@ -40,8 +40,8 @@ class Resident {
 
 // --- Dummy Data ---
 // بيانات وهمية واقعية مرتبطة بالحجوزات والوحدات السابقة
-final List<Resident> dummyResidents = [
-  Resident(
+final List<ResidentModel> dummyResidents = [
+  ResidentModel(
     id: 'RES-001',
     name: 'عبدالله الشمري',
     phone: '055-111-2222',
@@ -55,7 +55,7 @@ final List<Resident> dummyResidents = [
     rentAmount: 7500.0,
     attachments: ['contract_AS.pdf', 'id_AS.jpg'],
   ),
-  Resident(
+  ResidentModel(
     id: 'RES-002',
     name: 'سارة القحطاني',
     phone: '050-222-3333',
@@ -69,7 +69,7 @@ final List<Resident> dummyResidents = [
     rentAmount: 2400.0,
     attachments: ['contract_SQ.pdf'],
   ),
-  Resident(
+  ResidentModel(
     id: 'RES-003',
     name: 'فيصل الحربي',
     phone: '053-444-5555',
@@ -82,7 +82,7 @@ final List<Resident> dummyResidents = [
     contractEndDate: DateTime(2025, 10, 16),
     rentAmount: 9000.0,
   ),
-  Resident(
+  ResidentModel(
     id: 'RES-004',
     name: 'نورة السبيعي',
     phone: '054-555-6666',

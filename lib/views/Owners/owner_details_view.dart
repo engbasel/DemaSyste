@@ -1,4 +1,4 @@
-import 'package:dema/views/Owners/Owner.dart';
+import 'package:dema/views/Owners/owner_model.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 

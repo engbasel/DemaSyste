@@ -13,7 +13,7 @@ enum MaintenancePriority {
   High, // عالية
 }
 
-class MaintenanceRequest {
+class MaintenanceRequestModel {
   final String id;
   final String title;
   final String description;
@@ -26,7 +26,7 @@ class MaintenanceRequest {
   final String? assignedTechnician;
   final double? cost;
 
-  MaintenanceRequest({
+  MaintenanceRequestModel({
     required this.id,
     required this.title,
     required this.description,
@@ -43,8 +43,8 @@ class MaintenanceRequest {
 
 // --- بيانات وهمية واقعية ---
 // مرتبطة ببيانات المستأجرين في booking_model.dart
-final List<MaintenanceRequest> dummyMaintenanceRequests = [
-  MaintenanceRequest(
+final List<MaintenanceRequestModel> dummyMaintenanceRequests = [
+  MaintenanceRequestModel(
     id: 'MNT-001',
     title: 'تسريب في صنبور المطبخ',
     description:
@@ -56,7 +56,7 @@ final List<MaintenanceRequest> dummyMaintenanceRequests = [
     roomType: 'جناح ديلوكس',
     guestName: 'عبدالله الشمري',
   ),
-  MaintenanceRequest(
+  MaintenanceRequestModel(
     id: 'MNT-002',
     title: 'تكييف الهواء لا يبرد',
     description:
@@ -69,7 +69,7 @@ final List<MaintenanceRequest> dummyMaintenanceRequests = [
     guestName: 'سارة القحطاني',
     assignedTechnician: 'أحمد المصري',
   ),
-  MaintenanceRequest(
+  MaintenanceRequestModel(
     id: 'MNT-003',
     title: 'لمبة الحمام محترقة',
     description: 'اللمبة الرئيسية في الحمام تحتاج إلى تغيير.',
@@ -82,7 +82,7 @@ final List<MaintenanceRequest> dummyMaintenanceRequests = [
     assignedTechnician: 'شركة النور للكهرباء',
     cost: 50.0,
   ),
-  MaintenanceRequest(
+  MaintenanceRequestModel(
     id: 'MNT-004',
     title: 'باب الخزانة لا يغلق جيدًا',
     description: 'باب خزانة الملابس في غرفة النوم الرئيسية لا يغلق بشكل صحيح.',
@@ -93,7 +93,7 @@ final List<MaintenanceRequest> dummyMaintenanceRequests = [
     roomType: 'جناح تنفيذي',
     guestName: 'نورة السبيعي',
   ),
-  MaintenanceRequest(
+  MaintenanceRequestModel(
     id: 'MNT-005',
     title: 'إصلاح زجاج النافذة',
     description:

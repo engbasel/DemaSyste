@@ -1,9 +1,9 @@
-import 'package:dema/views/Residents/Resident.dart';
+import 'package:dema/views/Residents/resident_model.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class ResidentDetailsView extends StatelessWidget {
-  final Resident resident;
+  final ResidentModel resident;
   const ResidentDetailsView({super.key, required this.resident});
 
   @override

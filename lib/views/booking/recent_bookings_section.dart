@@ -1,6 +1,6 @@
 // ويدجت قسم الحجوزات الأخيرة
 import 'package:dema/views/booking/booking_model.dart';
-import 'package:dema/views/Rooms/StatusChip.dart';
+import 'package:dema/views/Rooms/status_chip.dart';
 import 'package:flutter/material.dart';
 
 class RecentBookingsSection extends StatelessWidget {

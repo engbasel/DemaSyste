@@ -1,7 +1,7 @@
-import 'package:dema/views/Dashboard/OccupancyChartSection.dart';
-import 'package:dema/views/Dashboard/OverviewSection.dart';
-import 'package:dema/views/Dashboard/TodaysActivitySection.dart';
-import 'package:dema/views/booking/RecentBookingsSection.dart';
+import 'package:dema/views/Dashboard/occupancy_chart_section.dart';
+import 'package:dema/views/Dashboard/overview_section.dart';
+import 'package:dema/views/Dashboard/todays_activity_section.dart';
+import 'package:dema/views/booking/recent_bookings_section.dart';
 import 'package:flutter/material.dart';
 
 class DashboardContent extends StatelessWidget {

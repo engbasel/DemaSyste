@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
 import 'dart:collection';
-import 'package:dema/views/booking/BookingDetailsView.dart';
+import 'package:dema/views/booking/booking_details_view.dart';
 import 'package:dema/views/booking/booking_model.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';

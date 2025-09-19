@@ -1,4 +1,4 @@
-import 'package:dema/views/Navbar/NavItem.dart';
+import 'package:dema/views/Navbar/nav_item.dart';
 import 'package:flutter/material.dart';
 
 class SideNavigationBar extends StatelessWidget {
