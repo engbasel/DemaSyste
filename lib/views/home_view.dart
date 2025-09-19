@@ -1,3 +1,4 @@
+import 'package:dema/views/Maintenance/MaintenanceRequestsView.dart';
 import 'package:dema/views/booking/BookingsView.dart';
 import 'package:dema/views/Dashboard/DashboardContent.dart';
 import 'package:dema/views/Rooms/RoomsView.dart';
@@ -82,15 +83,6 @@ class _HomeViewState extends State<HomeView> {
         },
       ),
     );
-  }
-}
-
-class MaintenanceRequestsView extends StatelessWidget {
-  const MaintenanceRequestsView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text('طلبات الصيانة')));
   }
 }
 
