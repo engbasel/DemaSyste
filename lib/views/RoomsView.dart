@@ -3,76 +3,68 @@ import 'package:dema/views/RoomDetailsView.dart';
 import 'package:dema/views/Room_model.dart';
 import 'package:flutter/material.dart';
 
-// Main View Widget
-class RoomsView extends StatelessWidget {
+class RoomsView extends StatefulWidget {
   const RoomsView({super.key});
 
   @override
+  State<RoomsView> createState() => _RoomsViewState();
+}
+
+class _RoomsViewState extends State<RoomsView> {
+  String selectedStatus = "All";
+  String selectedType = "All";
+  double minPrice = 3000;
+  double maxPrice = 7000;
+  String sortOption = "Default";
+
+  // Dummy data
+  final List<RoomModel> rooms = [
+    RoomModel(
+      imageUrl:
+          'https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1170&q=80',
+      roomNumber: 'Unit 101',
+      roomType: 'Standard Apartment',
+      status: RoomStatus.available,
+      ownerName: 'Youssef El-Masry',
+      rentAmount: 4500.00,
+      maintenanceNotes: 'AC filter needs cleaning next month.',
+    ),
+    RoomModel(
+      imageUrl:
+          'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1170&q=80',
+      roomNumber: 'Unit 102',
+      roomType: 'Deluxe Apartment',
+      status: RoomStatus.occupied,
+      ownerName: 'Fatima Al-Sayed',
+      rentAmount: 6200.00,
+      maintenanceNotes: 'Tenant reported a minor leak in the kitchen sink.',
+    ),
+    RoomModel(
+      imageUrl:
+          'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&w=1170&q=80',
+      roomNumber: 'Unit 103',
+      roomType: 'Studio',
+      status: RoomStatus.needsCleaning,
+      ownerName: 'Ali Hassan',
+      rentAmount: 3800.00,
+      maintenanceNotes:
+          'Full cleaning and paint touch-up required before new tenant moves in.',
+    ),
+  ];
+
+  @override
   Widget build(BuildContext context) {
-    // Dummy data - replace with your actual data from an API
-    final List<RoomModel> rooms = [
-      RoomModel(
-        imageUrl:
-            'https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
-        roomNumber: 'Unit 101',
-        roomType: 'Standard Apartment',
-        status: RoomStatus.available,
-        ownerName: 'Youssef El-Masry',
-        rentAmount: 4500.00,
-        maintenanceNotes: 'AC filter needs cleaning next month.',
-      ),
-      RoomModel(
-        imageUrl:
-            'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
-        roomNumber: 'Unit 102',
-        roomType: 'Deluxe Apartment',
-        status: RoomStatus.occupied,
-        ownerName: 'Fatima Al-Sayed',
-        rentAmount: 6200.00,
-        maintenanceNotes: 'Tenant reported a minor leak in the kitchen sink.',
-      ),
-      RoomModel(
-        imageUrl:
-            'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
-        roomNumber: 'Unit 103',
-        roomType: 'Studio',
-        status: RoomStatus.needsCleaning,
-        ownerName: 'Ali Hassan',
-        rentAmount: 3800.00,
-        maintenanceNotes:
-            'Full cleaning and paint touch-up required before new tenant moves in.',
-      ),
-      RoomModel(
-        imageUrl:
-            'https://images.unsplash.com/photo-1590490359854-dfba59585b73?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
-        roomNumber: 'Unit 104',
-        roomType: 'Standard Apartment',
-        status: RoomStatus.available,
-        ownerName: 'Mona Ibrahim',
-        rentAmount: 4650.00,
-        maintenanceNotes: 'No issues reported.',
-      ),
-      RoomModel(
-        imageUrl:
-            'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
-        roomNumber: 'Unit 105',
-        roomType: 'Deluxe Apartment',
-        status: RoomStatus.occupied,
-        ownerName: 'Khaled Amer',
-        rentAmount: 6500.00,
-        maintenanceNotes: 'Check balcony door lock.',
-      ),
-      RoomModel(
-        imageUrl:
-            'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
-        roomNumber: 'Unit 106',
-        roomType: 'Studio',
-        status: RoomStatus.needsCleaning,
-        ownerName: 'Sara Gad',
-        rentAmount: 4000.00,
-        maintenanceNotes: 'All clear.',
-      ),
-    ];
+    // Apply filters
+    List<RoomModel> filteredRooms = rooms.where((room) {
+      bool statusMatch =
+          selectedStatus == "All" ||
+          room.status.name == selectedStatus.toLowerCase();
+      bool typeMatch =
+          selectedType == "All" || room.roomType.contains(selectedType);
+      bool priceMatch =
+          room.rentAmount >= minPrice && room.rentAmount <= maxPrice;
+      return statusMatch && typeMatch && priceMatch;
+    }).toList();
 
     return Scaffold(
       backgroundColor: const Color(0xFFF8FAFC),
@@ -81,9 +73,13 @@ class RoomsView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildHeader(context),
+            _buildHeader(),
+            const SizedBox(height: 16),
+            _buildCounters(rooms),
             const SizedBox(height: 24),
             _buildSearchBar(),
+            const SizedBox(height: 16),
+            _buildFilterBar(),
             const SizedBox(height: 24),
             const Text(
               'Properties',
@@ -94,14 +90,14 @@ class RoomsView extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-            _buildRoomsGrid(context, rooms),
+            _buildRoomsGrid(filteredRooms),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildHeader(BuildContext context) {
+  Widget _buildHeader() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -148,7 +144,7 @@ class RoomsView extends StatelessWidget {
     );
   }
 
-  Widget _buildRoomsGrid(BuildContext context, List<RoomModel> rooms) {
+  Widget _buildRoomsGrid(List<RoomModel> rooms) {
     return Wrap(
       spacing: 16.0,
       runSpacing: 16.0,
@@ -161,9 +157,195 @@ class RoomsView extends StatelessWidget {
             ),
           ),
           borderRadius: BorderRadius.circular(12),
-          child: RoomCard(room: room),
+          child: Stack(
+            children: [
+              RoomCard(room: room),
+              Positioned(top: 8, right: 8, child: _statusChip(room.status)),
+              Positioned(
+                bottom: 8,
+                right: 8,
+                child: ElevatedButton(
+                  onPressed: () {
+                    if (room.status == RoomStatus.occupied) {
+                      // Collect rent
+                    } else if (room.status == RoomStatus.needsCleaning) {
+                      // Mark as cleaned
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.indigo,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 6,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: Text(
+                    room.status == RoomStatus.occupied
+                        ? "Collect Rent"
+                        : room.status == RoomStatus.needsCleaning
+                        ? "Mark Cleaned"
+                        : "Action",
+                    style: const TextStyle(fontSize: 12),
+                  ),
+                ),
+              ),
+            ],
+          ),
         );
       }).toList(),
+    );
+  }
+
+  Widget _statusChip(RoomStatus status) {
+    String text;
+    Color color;
+    switch (status) {
+      case RoomStatus.available:
+        text = "Available";
+        color = Colors.green;
+        break;
+      case RoomStatus.occupied:
+        text = "Occupied";
+        color = Colors.red;
+        break;
+      case RoomStatus.needsCleaning:
+        text = "Needs Cleaning";
+        color = Colors.orange;
+        break;
+    }
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: color.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Text(
+        text,
+        style: TextStyle(
+          color: color,
+          fontSize: 12,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCounters(List<RoomModel> rooms) {
+    int total = rooms.length;
+    int available = rooms.where((r) => r.status == RoomStatus.available).length;
+    int occupied = rooms.where((r) => r.status == RoomStatus.occupied).length;
+    int needsCleaning = rooms
+        .where((r) => r.status == RoomStatus.needsCleaning)
+        .length;
+
+    Widget _counterCard(String title, int count, Color color) {
+      return Expanded(
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          margin: const EdgeInsets.symmetric(horizontal: 4),
+          decoration: BoxDecoration(
+            color: color.withOpacity(0.1),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Column(
+            children: [
+              Text(
+                "$count",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: color,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                title,
+                style: const TextStyle(fontSize: 14, color: Colors.black54),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    return Row(
+      children: [
+        _counterCard("Total", total, Colors.blue),
+        _counterCard("Available", available, Colors.green),
+        _counterCard("Occupied", occupied, Colors.red),
+        _counterCard("Needs Cleaning", needsCleaning, Colors.orange),
+      ],
+    );
+  }
+
+  Widget _buildFilterBar() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Expanded(
+              child: DropdownButtonFormField<String>(
+                value: selectedStatus,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: "Status",
+                ),
+                items: ["All", "Available", "Occupied", "Needs Cleaning"]
+                    .map((e) => DropdownMenuItem(value: e, child: Text(e)))
+                    .toList(),
+                onChanged: (val) => setState(() => selectedStatus = val!),
+              ),
+            ),
+            const SizedBox(width: 8),
+            Expanded(
+              child: DropdownButtonFormField<String>(
+                value: selectedType,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: "Type",
+                ),
+                items: ["All", "Studio", "Standard", "Deluxe"]
+                    .map((e) => DropdownMenuItem(value: e, child: Text(e)))
+                    .toList(),
+                onChanged: (val) => setState(() => selectedType = val!),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 12),
+        Text("Price Range: ${minPrice.round()} - ${maxPrice.round()} EGP"),
+        RangeSlider(
+          values: RangeValues(minPrice, maxPrice),
+          min: 2000,
+          max: 10000,
+          divisions: 8,
+          onChanged: (RangeValues values) {
+            setState(() {
+              minPrice = values.start;
+              maxPrice = values.end;
+            });
+          },
+        ),
+        const SizedBox(height: 8),
+        DropdownButtonFormField<String>(
+          value: sortOption,
+          decoration: const InputDecoration(
+            border: OutlineInputBorder(),
+            labelText: "Sort By",
+          ),
+          items: [
+            "Default",
+            "Floor",
+            "Price",
+            "Status",
+          ].map((e) => DropdownMenuItem(value: e, child: Text(e))).toList(),
+          onChanged: (val) => setState(() => sortOption = val!),
+        ),
+      ],
     );
   }
 }
