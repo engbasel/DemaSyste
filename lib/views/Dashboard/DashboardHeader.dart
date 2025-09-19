@@ -19,7 +19,7 @@ class DashboardHeader extends StatelessWidget {
             child: const TextField(
               decoration: InputDecoration(
                 icon: Icon(Icons.search, color: Color(0xFF94A3B8)),
-                hintText: 'Search',
+                hintText: 'بحث',
                 border: InputBorder.none,
                 hintStyle: TextStyle(color: Color(0xFF94A3B8)),
               ),

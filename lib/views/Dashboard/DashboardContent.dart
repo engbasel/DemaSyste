@@ -9,49 +9,53 @@ class DashboardContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFF1F5F9), // Lighter grey background
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Header
-            Text(
-              'Dashboard',
-              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: const Color(0xFF1E293B),
+    return Directionality(
+      // 👈 دعم الكتابة من اليمين لليسار
+      textDirection: TextDirection.rtl,
+      child: Scaffold(
+        backgroundColor: const Color(0xFFF1F5F9), // خلفية رمادية فاتحة
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // العنوان الرئيسي
+              Text(
+                'لوحة التحكم',
+                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: const Color(0xFF1E293B),
+                ),
               ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'Welcome back, here is a summary of your property.',
-              style: Theme.of(
-                context,
-              ).textTheme.titleMedium?.copyWith(color: const Color(0xFF64748B)),
-            ),
-            const SizedBox(height: 24),
+              const SizedBox(height: 8),
+              Text(
+                'مرحباً بك مجدداً، هنا ملخص عن عقاراتك وإدارتها.',
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  color: const Color(0xFF64748B),
+                ),
+              ),
+              const SizedBox(height: 24),
 
-            // Responsive Layout
-            LayoutBuilder(
-              builder: (context, constraints) {
-                if (constraints.maxWidth > 1200) {
-                  // Wide screen layout (e.g., Desktop)
-                  return _buildWideLayout();
-                } else {
-                  // Narrow screen layout (e.g., Tablet/Mobile)
-                  return _buildNarrowLayout();
-                }
-              },
-            ),
-          ],
+              // تصميم مرن
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  if (constraints.maxWidth > 1200) {
+                    // شاشات عريضة (كمبيوتر)
+                    return _buildWideLayout();
+                  } else {
+                    // شاشات أصغر (تابلت / جوال)
+                    return _buildNarrowLayout();
+                  }
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  // Layout for wider screens
+  // تصميم للشاشات العريضة
   Widget _buildWideLayout() {
     return Column(
       children: [
@@ -60,7 +64,7 @@ class DashboardContent extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Expanded(flex: 3, child: OccupancyChartSection()),
+            Expanded(flex: 3, child: OccupancyChartSection()),
             const SizedBox(width: 24),
             Expanded(flex: 2, child: TodaysActivitySection()),
           ],
@@ -71,7 +75,7 @@ class DashboardContent extends StatelessWidget {
     );
   }
 
-  // Layout for narrower screens
+  // تصميم للشاشات الصغيرة
   Widget _buildNarrowLayout() {
     return Column(
       children: [

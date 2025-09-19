@@ -25,15 +25,15 @@ class TodaysActivitySection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Today's Activity",
+              "اليوم",
               style: Theme.of(
                 context,
               ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
-            _buildActivityList("Check-Ins", checkInsToday, Colors.green),
+            _buildActivityList("الدخول", checkInsToday, Colors.green),
             const Divider(height: 32),
-            _buildActivityList("Check-Outs", checkOutsToday, Colors.orange),
+            _buildActivityList("الخروج", checkOutsToday, Colors.orange),
           ],
         ),
       ),
@@ -58,10 +58,7 @@ class TodaysActivitySection extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         if (bookings.isEmpty)
-          const Text(
-            "No activity for today.",
-            style: TextStyle(color: Colors.grey),
-          )
+          const Text("لا يوجد حجوزات.", style: TextStyle(color: Colors.grey))
         else
           ...bookings
               .map(
@@ -69,7 +66,7 @@ class TodaysActivitySection extends StatelessWidget {
                   contentPadding: EdgeInsets.zero,
                   leading: const Icon(Icons.person),
                   title: Text(b.guestName),
-                  subtitle: Text("Room ${b.roomNumber}"),
+                  subtitle: Text("غرفة رقم ${b.roomNumber}"),
                 ),
               )
               .toList(),

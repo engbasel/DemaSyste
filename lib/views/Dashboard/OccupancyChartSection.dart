@@ -16,7 +16,7 @@ class OccupancyChartSection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Weekly Occupancy",
+              "الإحصائيات الأسبوعية",
               style: Theme.of(
                 context,
               ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),

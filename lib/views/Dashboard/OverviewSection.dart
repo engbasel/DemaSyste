@@ -30,26 +30,26 @@ class OverviewSection extends StatelessWidget {
               childAspectRatio: isSmall ? 1.5 : 1.8,
               children: const [
                 StatCard(
-                  title: 'Total Bookings',
+                  title: 'الحجوزات',
                   value: '250',
                   change: '+10%',
                   isPositive: true,
                 ),
                 StatCard(
-                  title: 'Revenue',
+                  title: 'الإيرادات',
                   value: '\$15,000',
                   change: '+5%',
                   isPositive: true,
                 ),
                 StatCard(
-                  title: 'Occupancy Rate',
+                  title: 'الإحصائيات',
                   value: '75%',
                   change: '-2%',
                   isPositive: false,
                 ),
                 StatCard(
-                  title: 'Average Stay Duration',
-                  value: '3.5 days',
+                  title: 'مدة البقاء المتوسطة',
+                  value: '3.5 أيام',
                   change: '+1%',
                   isPositive: true,
                 ),

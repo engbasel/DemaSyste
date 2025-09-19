@@ -38,20 +38,20 @@ class BookingDetailsView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             _buildTimelineStep(
-              'Booked',
+              'الحجز',
               Icons.book_online,
               booking.status == BookingStatus.booked ||
                   booking.status == BookingStatus.checkedIn,
             ),
             const Expanded(child: Divider()),
             _buildTimelineStep(
-              'Checked-In',
+              'الدخول',
               Icons.login,
               booking.status == BookingStatus.checkedIn,
             ),
             const Expanded(child: Divider()),
             _buildTimelineStep(
-              'Checked-Out',
+              'الخروج',
               Icons.logout,
               booking.status == BookingStatus.checkedOut,
             ),
@@ -84,14 +84,14 @@ class BookingDetailsView extends StatelessWidget {
         child: ExpansionTile(
           leading: const Icon(Icons.person),
           title: const Text(
-            'Guest Information',
+            'معلومات العميل',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           initiallyExpanded: true,
           children: [
-            _buildDetailListTile('Name', booking.guestName),
-            _buildDetailListTile('Phone', booking.guestPhone),
-            _buildDetailListTile('Email', booking.guestEmail),
+            _buildDetailListTile('الاسم', booking.guestName),
+            _buildDetailListTile('الهاتف', booking.guestPhone),
+            _buildDetailListTile('البريد الإلكتروني', booking.guestEmail),
           ],
         ),
       ),
@@ -104,22 +104,22 @@ class BookingDetailsView extends StatelessWidget {
         child: ExpansionTile(
           leading: const Icon(Icons.hotel),
           title: const Text(
-            'Booking Information',
+            'معلومات الحجز',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           initiallyExpanded: true,
           children: [
             _buildDetailListTile(
-              'Check-In',
+              'تاريخ الدخول',
               DateFormat.yMMMd().format(booking.checkInDate),
             ),
             _buildDetailListTile(
-              'Check-Out',
+              'تاريخ الخروج',
               DateFormat.yMMMd().format(booking.checkOutDate),
             ),
-            _buildDetailListTile('Duration', '${booking.nights} Nights'),
-            _buildDetailListTile('Guests', '${booking.numberOfGuests}'),
-            _buildDetailListTile('Booking Type', booking.bookingType.name),
+            _buildDetailListTile('الليلة', '${booking.nights}'),
+            _buildDetailListTile('عدد الضيوف', '${booking.numberOfGuests}'),
+            _buildDetailListTile('نوع الحجز', booking.bookingType.name),
           ],
         ),
       ),
@@ -132,26 +132,26 @@ class BookingDetailsView extends StatelessWidget {
         child: ExpansionTile(
           leading: const Icon(Icons.monetization_on),
           title: const Text(
-            'Payment Information',
+            'معلومات الدفع',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           initiallyExpanded: true,
           children: [
             _buildDetailListTile(
-              'Total Price',
-              '${booking.totalPrice.toStringAsFixed(2)} EGP',
+              'السعر الكلي',
+              '${booking.totalPrice.toStringAsFixed(2)} ريال',
             ),
             _buildDetailListTile(
-              'Amount Paid',
-              '${booking.amountPaid.toStringAsFixed(2)} EGP',
+              'المدفوع',
+              '${booking.amountPaid.toStringAsFixed(2)} ريال',
               color: Colors.green,
             ),
             _buildDetailListTile(
-              'Remaining Balance',
-              '${booking.remainingBalance.toStringAsFixed(2)} EGP',
+              'الباقي',
+              '${booking.remainingBalance.toStringAsFixed(2)} ريال',
               color: Colors.red,
             ),
-            _buildDetailListTile('Payment Method', booking.paymentMethod.name),
+            _buildDetailListTile('طريقة الدفع', booking.paymentMethod.name),
           ],
         ),
       ),
@@ -164,12 +164,12 @@ class BookingDetailsView extends StatelessWidget {
         child: ExpansionTile(
           leading: const Icon(Icons.attach_file),
           title: const Text(
-            'Attachments',
+            'المرفقات',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           children: [
             if (booking.attachments.isEmpty)
-              const ListTile(title: Text('No attachments found.'))
+              const ListTile(title: Text('لا يوجد مرفقات'))
             else
               ...booking.attachments
                   .map(

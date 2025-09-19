@@ -12,7 +12,7 @@ class RecentBookingsSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          'Recent Bookings',
+          'الحجوزات الأخيرة',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -35,11 +35,11 @@ class RecentBookingsSection extends StatelessWidget {
               color: Color(0xFF64748B),
             ),
             columns: const [
-              DataColumn(label: Text('Guest Name')),
-              DataColumn(label: Text('Room Type')),
-              DataColumn(label: Text('Check-in')),
-              DataColumn(label: Text('Check-out')),
-              DataColumn(label: Text('Status')),
+              DataColumn(label: Text('الاسم')),
+              DataColumn(label: Text('غرفة')),
+              DataColumn(label: Text('تاريخ الدخول')),
+              DataColumn(label: Text('تاريخ الخروج')),
+              DataColumn(label: Text('الحالة')),
             ],
             rows: dummyBookings.map((booking) {
               return DataRow(

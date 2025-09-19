@@ -74,7 +74,7 @@ class _BookingsViewState extends State<BookingsView> {
       backgroundColor: const Color(0xFFF8FAFC),
       appBar: AppBar(
         title: const Text(
-          'Bookings',
+          'الحجوزات',
           style: TextStyle(color: Color(0xFF1E293B)),
         ),
         backgroundColor: Colors.white,
@@ -85,7 +85,7 @@ class _BookingsViewState extends State<BookingsView> {
             child: ElevatedButton.icon(
               onPressed: () {},
               icon: const Icon(Icons.add),
-              label: const Text("New Booking"),
+              label: const Text("حجز جديد"),
             ),
           ),
         ],
@@ -122,10 +122,10 @@ class _BookingsViewState extends State<BookingsView> {
       padding: const EdgeInsets.all(16.0),
       child: Row(
         children: [
-          _buildSummaryCard("Total", dummyBookings.length, Colors.blue),
+          _buildSummaryCard("المجموع", dummyBookings.length, Colors.blue),
           const SizedBox(width: 12),
           _buildSummaryCard(
-            "Checked-In",
+            "الدخول",
             dummyBookings
                 .where((b) => b.status == BookingStatus.checkedIn)
                 .length,
@@ -133,7 +133,7 @@ class _BookingsViewState extends State<BookingsView> {
           ),
           const SizedBox(width: 12),
           _buildSummaryCard(
-            "Pending",
+            "قيد الانتظار",
             dummyBookings
                 .where((b) => b.status == BookingStatus.pending)
                 .length,
@@ -141,7 +141,7 @@ class _BookingsViewState extends State<BookingsView> {
           ),
           const SizedBox(width: 12),
           _buildSummaryCard(
-            "Checked-Out",
+            "الخروج",
             dummyBookings
                 .where((b) => b.status == BookingStatus.checkedOut)
                 .length,
@@ -170,7 +170,7 @@ class _BookingsViewState extends State<BookingsView> {
                 _applyFilters();
               },
               decoration: InputDecoration(
-                hintText: "Search by guest name or room",
+                hintText: "بحث عن حجز",
                 prefixIcon: const Icon(Icons.search),
                 filled: true,
                 fillColor: Colors.white,
@@ -190,12 +190,12 @@ class _BookingsViewState extends State<BookingsView> {
             ),
             child: DropdownButton<BookingStatus?>(
               underline: const SizedBox(),
-              hint: const Text("Filter by Status"),
+              hint: const Text("تصفية حسب الحالة"),
               value: _selectedStatus,
               items: [
                 const DropdownMenuItem(
                   value: null,
-                  child: Text("All Statuses"),
+                  child: Text("جميع الحالات"),
                 ),
                 ...BookingStatus.values.map(
                   (status) =>
@@ -213,7 +213,7 @@ class _BookingsViewState extends State<BookingsView> {
           const SizedBox(width: 12),
           IconButton(
             icon: const Icon(Icons.date_range),
-            tooltip: 'Filter by Check-in Date',
+            tooltip: 'تصفية حسب تاريخ الدخول',
             onPressed: _selectDateRange,
           ),
           if (_selectedDateRange != null)
@@ -236,13 +236,13 @@ class _BookingsViewState extends State<BookingsView> {
 
   DataTable _buildBookingsTable() {
     final columns = [
-      'Guest',
-      'Room',
-      'Check-In/Out',
-      'Nights',
-      'Total Price',
-      'Status',
-      'Actions',
+      'الاسم',
+      'غرفة',
+      'تاريخ الدخول/الخروج',
+      'الليلة',
+      'السعر الكلي',
+      'الحالة',
+      'الإجراءات',
     ];
     return DataTable(
       columns: columns
@@ -266,7 +266,7 @@ class _BookingsViewState extends State<BookingsView> {
               ),
             ),
             DataCell(Text(b.nights.toString())),
-            DataCell(Text('${b.totalPrice.toStringAsFixed(2)} EGP')),
+            DataCell(Text('${b.totalPrice.toStringAsFixed(2)} ريال')),
             DataCell(_buildStatusChip(b.status)),
             DataCell(
               PopupMenuButton<String>(
@@ -283,25 +283,25 @@ class _BookingsViewState extends State<BookingsView> {
                 itemBuilder: (context) => [
                   const PopupMenuItem(
                     value: "details",
-                    child: Text("View Details"),
+                    child: Text("تفاصيل"),
                   ),
                   const PopupMenuItem(
                     value: "checkin",
-                    child: Text("Check-In"),
+                    child: Text("تسجيل الدخول"),
                   ),
                   const PopupMenuItem(
                     value: "checkout",
-                    child: Text("Check-Out"),
+                    child: Text("تسجيل الخروج"),
                   ),
                   const PopupMenuItem(
                     value: "payment",
-                    child: Text("Collect Payment"),
+                    child: Text("تحصيل المدفوعات"),
                   ),
                   const PopupMenuDivider(),
                   const PopupMenuItem(
                     value: "cancel",
                     child: Text(
-                      "Cancel Booking",
+                      "إلغاء الحجز",
                       style: TextStyle(color: Colors.red),
                     ),
                   ),

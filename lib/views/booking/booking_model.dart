@@ -1,4 +1,6 @@
 // Enums for clarity and type safety
+import 'package:dema/views/Rooms/Room_model.dart';
+
 enum BookingStatus { booked, checkedIn, checkedOut, pending, noShow }
 
 enum BookingType { online, walkIn, corporate }
@@ -200,3 +202,215 @@ final List<Booking> dummyBookings = [
     status: BookingStatus.noShow,
   ),
 ];
+
+// // Dummy data
+// final List<RoomModel> rooms = [
+//   RoomModel(
+//     imageUrl:
+//         'https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1170&q=80',
+//     roomNumber: 'Unit 101',
+//     roomType: 'Standard Apartment',
+//     status: RoomStatus.available,
+//     ownerName: 'Youssef El-Masry',
+//     rentAmount: 4500.00,
+//     maintenanceNotes: 'AC filter needs cleaning next month.',
+//   ),
+//   RoomModel(
+//     imageUrl:
+//         'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1170&q=80',
+//     roomNumber: 'Unit 102',
+//     roomType: 'Deluxe Apartment',
+//     status: RoomStatus.occupied,
+//     ownerName: 'Fatima Al-Sayed',
+//     rentAmount: 6200.00,
+//     maintenanceNotes: 'Tenant reported a minor leak in the kitchen sink.',
+//   ),
+//   RoomModel(
+//     imageUrl:
+//         'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&w=1170&q=80',
+//     roomNumber: 'Unit 103',
+//     roomType: 'Studio',
+//     status: RoomStatus.needsCleaning,
+//     ownerName: 'Ali Hassan',
+//     rentAmount: 3800.00,
+//     maintenanceNotes:
+//         'Full cleaning and paint touch-up required before new tenant moves in.',
+//   ),
+//   RoomModel(
+//     imageUrl:
+//         'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1170&q=80',
+//     roomNumber: 'Unit 104',
+//     roomType: 'Standard Apartment',
+//     status: RoomStatus.available,
+//     ownerName: 'Mona Ibrahim',
+//     rentAmount: 4700.00,
+//     maintenanceNotes: 'No issues reported.',
+//   ),
+//   RoomModel(
+//     imageUrl:
+//         'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1170&q=80',
+//     roomNumber: 'Unit 105',
+//     roomType: 'Deluxe Apartment',
+//     status: RoomStatus.occupied,
+//     ownerName: 'Khaled Amer',
+//     rentAmount: 6500.00,
+//     maintenanceNotes: 'Check balcony door lock.',
+//   ),
+//   RoomModel(
+//     imageUrl:
+//         'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1170&q=80',
+//     roomNumber: 'Unit 106',
+//     roomType: 'Studio',
+//     status: RoomStatus.available,
+//     ownerName: 'Sara Gad',
+//     rentAmount: 3500.00,
+//     maintenanceNotes: 'Freshly painted, ready for tenant.',
+//   ),
+//   RoomModel(
+//     imageUrl:
+//         'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1170&q=80',
+//     roomNumber: 'Unit 107',
+//     roomType: 'Standard Apartment',
+//     status: RoomStatus.needsCleaning,
+//     ownerName: 'Omar Saleh',
+//     rentAmount: 4200.00,
+//     maintenanceNotes: 'Deep cleaning required after move-out.',
+//   ),
+//   RoomModel(
+//     imageUrl:
+//         'https://images.unsplash.com/photo-1502672023488-70e25813eb80?auto=format&fit=crop&w=1170&q=80',
+//     roomNumber: 'Unit 108',
+//     roomType: 'Deluxe Apartment',
+//     status: RoomStatus.available,
+//     ownerName: 'Nour Hassan',
+//     rentAmount: 7000.00,
+//     maintenanceNotes: 'All appliances tested and working.',
+//   ),
+//   RoomModel(
+//     imageUrl:
+//         'https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1170&q=80',
+//     roomNumber: 'Unit 109',
+//     roomType: 'Studio',
+//     status: RoomStatus.occupied,
+//     ownerName: 'Mohamed Tarek',
+//     rentAmount: 3900.00,
+//     maintenanceNotes: 'Tenant requested AC service.',
+//   ),
+//   RoomModel(
+//     imageUrl:
+//         'https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1170&q=80',
+//     roomNumber: 'Unit 110',
+//     roomType: 'Standard Apartment',
+//     status: RoomStatus.needsCleaning,
+//     ownerName: 'Layla Said',
+//     rentAmount: 4800.00,
+//     maintenanceNotes: 'Walls need repainting.',
+//   ),
+// ];
+// بيانات تجريبية (معربة)
+final List<RoomModel> rooms = [
+  RoomModel(
+    imageUrl:
+        'https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1170&q=80',
+    roomNumber: 'شقة 101',
+    roomType: 'شقة عادية',
+    status: RoomStatus.available,
+    ownerName: 'عبدالله العتيبي',
+    rentAmount: 4500.00,
+    maintenanceNotes: 'فلتر المكيف يحتاج تنظيف الشهر القادم.',
+  ),
+  RoomModel(
+    imageUrl:
+        'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1170&q=80',
+    roomNumber: 'شقة 102',
+    roomType: 'شقة فاخرة',
+    status: RoomStatus.occupied,
+    ownerName: 'فاطمة الشهري',
+    rentAmount: 6200.00,
+    maintenanceNotes: 'المستأجر أبلغ عن تسريب بسيط في حوض المطبخ.',
+  ),
+  RoomModel(
+    imageUrl:
+        'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&w=1170&q=80',
+    roomNumber: 'شقة 103',
+    roomType: 'استوديو',
+    status: RoomStatus.needsCleaning,
+    ownerName: 'علي القحطاني',
+    rentAmount: 3800.00,
+    maintenanceNotes: 'تحتاج تنظيف كامل مع ترميم بسيط قبل المستأجر الجديد.',
+  ),
+  RoomModel(
+    imageUrl:
+        'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1170&q=80',
+    roomNumber: 'شقة 104',
+    roomType: 'شقة عادية',
+    status: RoomStatus.available,
+    ownerName: 'منى الدوسري',
+    rentAmount: 4700.00,
+    maintenanceNotes: 'لا توجد ملاحظات.',
+  ),
+  RoomModel(
+    imageUrl:
+        'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1170&q=80',
+    roomNumber: 'شقة 105',
+    roomType: 'شقة فاخرة',
+    status: RoomStatus.occupied,
+    ownerName: 'خالد السبيعي',
+    rentAmount: 6500.00,
+    maintenanceNotes: 'يجب فحص قفل باب البلكونة.',
+  ),
+  RoomModel(
+    imageUrl:
+        'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1170&q=80',
+    roomNumber: 'شقة 106',
+    roomType: 'استوديو',
+    status: RoomStatus.available,
+    ownerName: 'سارة القاضي',
+    rentAmount: 3500.00,
+    maintenanceNotes: 'الشقة مطلية حديثاً وجاهزة للتأجير.',
+  ),
+  RoomModel(
+    imageUrl:
+        'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1170&q=80',
+    roomNumber: 'شقة 107',
+    roomType: 'شقة عادية',
+    status: RoomStatus.needsCleaning,
+    ownerName: 'عمر الغامدي',
+    rentAmount: 4200.00,
+    maintenanceNotes: 'تحتاج تنظيف عميق بعد خروج المستأجر السابق.',
+  ),
+  RoomModel(
+    imageUrl:
+        'https://images.unsplash.com/photo-1502672023488-70e25813eb80?auto=format&fit=crop&w=1170&q=80',
+    roomNumber: 'شقة 108',
+    roomType: 'شقة فاخرة',
+    status: RoomStatus.available,
+    ownerName: 'نورة الحربي',
+    rentAmount: 7000.00,
+    maintenanceNotes: 'تم فحص جميع الأجهزة وتعمل بشكل ممتاز.',
+  ),
+  RoomModel(
+    imageUrl:
+        'https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1170&q=80',
+    roomNumber: 'شقة 109',
+    roomType: 'استوديو',
+    status: RoomStatus.occupied,
+    ownerName: 'محمد التميمي',
+    rentAmount: 3900.00,
+    maintenanceNotes: 'المستأجر طلب صيانة للمكيف.',
+  ),
+  RoomModel(
+    imageUrl:
+        'https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1170&q=80',
+    roomNumber: 'شقة 110',
+    roomType: 'شقة عادية',
+    status: RoomStatus.needsCleaning,
+    ownerName: 'ليلى السالم',
+    rentAmount: 4800.00,
+    maintenanceNotes: 'الجدران تحتاج إعادة طلاء.',
+  ),
+];
+
+
+// لما العميل يمشي حضرتك هتبعت لة لينك يضيف راية في الاقامة وكل التفاصيل بحيث حضرتك تاخد راية ويوصلك في السيستم لو في اي تعديلات او اقتراحات من العملاء 
+// خدمة ما بعد البيع اهم شي في في التجارة

@@ -89,21 +89,21 @@ class OverviewSection extends StatelessWidget {
           childAspectRatio: 2.5,
           children: const [
             _OverviewCard(
-              title: 'Total Bookings',
+              title: 'الحجوزات',
               value: '250',
               icon: Icons.book_online,
               color: Colors.blue,
               change: '+10%',
             ),
             _OverviewCard(
-              title: 'Revenue',
+              title: 'الإيرادات',
               value: '\$15,000',
               icon: Icons.monetization_on,
               color: Colors.green,
               change: '+5%',
             ),
             _OverviewCard(
-              title: 'Occupancy Rate',
+              title: 'الإحصائيات',
               value: '75%',
               icon: Icons.hotel,
               color: Colors.orange,
@@ -111,7 +111,7 @@ class OverviewSection extends StatelessWidget {
               isNegative: true,
             ),
             _OverviewCard(
-              title: 'Available Rooms',
+              title: ' الغرف المتاحة',
               value: '12',
               icon: Icons.meeting_room,
               color: Colors.purple,
