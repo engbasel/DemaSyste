@@ -1,4 +1,7 @@
+// ignore_for_file: file_names
+
 import 'dart:collection';
+import 'package:dema/views/booking/BookingDetailsView.dart';
 import 'package:dema/views/booking/booking_model.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -15,7 +18,11 @@ class _CalendarViewState extends State<CalendarView> {
   // متغيرات الحالة لإدارة التقويم
   late final ValueNotifier<List<Booking>> _selectedEvents;
   final CalendarFormat _calendarFormat = CalendarFormat.month;
-  DateTime _focusedDay = DateTime.now();
+  DateTime _focusedDay = DateTime(
+    2025,
+    9,
+    19,
+  ); // Set initial focus day to match dummy data
   DateTime? _selectedDay;
 
   // خريطة لتخزين الأحداث (الحجوزات) لكل يوم
@@ -24,13 +31,8 @@ class _CalendarViewState extends State<CalendarView> {
   @override
   void initState() {
     super.initState();
-    // ✅ الخطوة 1: نقوم بتهيئة خريطة الأحداث أولاً
     _events = _groupBookingsByDate(dummyBookings);
-
-    // الخطوة 2: نحدد اليوم المختار
     _selectedDay = _focusedDay;
-
-    // ✅ الخطوة 3: الآن نستطيع استخدام _getEventsForDay بأمان لأن _events أصبحت لها قيمة
     _selectedEvents = ValueNotifier(_getEventsForDay(_selectedDay!));
   }
 
@@ -40,7 +42,6 @@ class _CalendarViewState extends State<CalendarView> {
     super.dispose();
   }
 
-  // دالة لتجميع الحجوزات حسب اليوم
   LinkedHashMap<DateTime, List<Booking>> _groupBookingsByDate(
     List<Booking> bookings,
   ) {
@@ -50,7 +51,6 @@ class _CalendarViewState extends State<CalendarView> {
     );
 
     for (final booking in bookings) {
-      // إضافة الحجز لكل يوم من تاريخ الدخول إلى ما قبل تاريخ الخروج
       for (
         var day = booking.checkInDate;
         day.isBefore(booking.checkOutDate);
@@ -66,12 +66,10 @@ class _CalendarViewState extends State<CalendarView> {
     return map;
   }
 
-  // دالة لجلب الأحداث ليوم معين
   List<Booking> _getEventsForDay(DateTime day) {
     return _events[DateTime.utc(day.year, day.month, day.day)] ?? [];
   }
 
-  // دالة عند اختيار يوم
   void _onDaySelected(DateTime selectedDay, DateTime focusedDay) {
     if (!isSameDay(_selectedDay, selectedDay)) {
       setState(() {
@@ -93,7 +91,6 @@ class _CalendarViewState extends State<CalendarView> {
       ),
       body: Column(
         children: [
-          // ويدجت التقويم
           Card(
             margin: const EdgeInsets.all(12.0),
             elevation: 2,
@@ -101,7 +98,7 @@ class _CalendarViewState extends State<CalendarView> {
               borderRadius: BorderRadius.circular(12),
             ),
             child: TableCalendar<Booking>(
-              locale: 'ar_SA', // للغة العربية
+              locale: 'ar_SA',
               firstDay: DateTime.utc(2024, 1, 1),
               lastDay: DateTime.utc(2026, 12, 31),
               focusedDay: _focusedDay,
@@ -113,13 +110,7 @@ class _CalendarViewState extends State<CalendarView> {
               onPageChanged: (focusedDay) {
                 _focusedDay = focusedDay;
               },
-              // تخصيص شكل التقويم
               calendarStyle: CalendarStyle(
-                // علامات الأحداث (الدوائر تحت اليوم)
-                markerDecoration: const BoxDecoration(
-                  color: Colors.blue,
-                  shape: BoxShape.circle,
-                ),
                 todayDecoration: BoxDecoration(
                   color: Colors.orange.withOpacity(0.5),
                   shape: BoxShape.circle,
@@ -128,15 +119,56 @@ class _CalendarViewState extends State<CalendarView> {
                   color: Theme.of(context).primaryColor,
                   shape: BoxShape.circle,
                 ),
+                // تم إزالة markerDecoration لأننا سنستخدم calendarBuilders
               ),
               headerStyle: const HeaderStyle(
                 formatButtonVisible: false,
                 titleCentered: true,
               ),
+              // ✅ --- الجزء المطور ---
+              // builder مخصص لعرض مؤشرات ملونة حسب نوع الحدث
+              calendarBuilders: CalendarBuilders(
+                markerBuilder: (context, date, events) {
+                  if (events.isNotEmpty) {
+                    final bookings = events.cast<Booking>();
+                    // التحقق من وجود أنواع مختلفة من الأحداث في نفس اليوم
+                    bool hasArrival = bookings.any(
+                      (b) => isSameDay(b.checkInDate, date),
+                    );
+                    bool hasDeparture = bookings.any(
+                      (b) => isSameDay(
+                        b.checkOutDate.subtract(const Duration(days: 1)),
+                        date,
+                      ),
+                    );
+                    bool hasStayOver = bookings.any(
+                      (b) =>
+                          !isSameDay(b.checkInDate, date) &&
+                          !isSameDay(
+                            b.checkOutDate.subtract(const Duration(days: 1)),
+                            date,
+                          ),
+                    );
+
+                    return Positioned(
+                      right: 5,
+                      bottom: 5,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          if (hasArrival) _buildMarker(Colors.green),
+                          if (hasStayOver) _buildMarker(Colors.orange),
+                          if (hasDeparture) _buildMarker(Colors.red),
+                        ],
+                      ),
+                    );
+                  }
+                  return null;
+                },
+              ),
             ),
           ),
           const SizedBox(height: 8.0),
-          // قائمة الأحداث لليوم المحدد
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
             child: Row(
@@ -167,6 +199,9 @@ class _CalendarViewState extends State<CalendarView> {
                   );
                 }
                 return ListView.builder(
+                  padding: const EdgeInsets.only(
+                    bottom: 80,
+                  ), // لإعطاء مساحة للزر العائم
                   itemCount: value.length,
                   itemBuilder: (context, index) {
                     return _buildEventListItem(value[index], _selectedDay!);
@@ -177,12 +212,37 @@ class _CalendarViewState extends State<CalendarView> {
           ),
         ],
       ),
+      // ✅ --- الجزء المضاف ---
+      // زر عائم لإضافة حجز جديد
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          // يمكن هنا فتح شاشة جديدة وإرسال التاريخ المختار
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                'فتح شاشة حجز جديد لتاريخ ${DateFormat.yMMMd('ar_SA').format(_selectedDay!)}',
+              ),
+              backgroundColor: Colors.green,
+            ),
+          );
+        },
+        label: const Text('حجز جديد'),
+        icon: const Icon(Icons.add),
+      ),
     );
   }
 
-  // ويدجت لعرض تفاصيل حدث (حجز) واحد في القائمة
+  // ويدجت صغيرة لرسم مؤشر ملون
+  Widget _buildMarker(Color color) {
+    return Container(
+      width: 7,
+      height: 7,
+      margin: const EdgeInsets.symmetric(horizontal: 0.5),
+      decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+    );
+  }
+
   Widget _buildEventListItem(Booking booking, DateTime selectedDay) {
-    // تحديد نوع الحدث (وصول، مغادرة، إقامة)
     String eventType;
     Color indicatorColor;
     if (isSameDay(booking.checkInDate, selectedDay)) {
@@ -192,7 +252,6 @@ class _CalendarViewState extends State<CalendarView> {
       booking.checkOutDate.subtract(const Duration(days: 1)),
       selectedDay,
     )) {
-      // Note: checkOutDate is the morning of departure, so the last night is the day before.
       eventType = "مغادرة";
       indicatorColor = Colors.red;
     } else {
@@ -222,6 +281,16 @@ class _CalendarViewState extends State<CalendarView> {
           eventType,
           style: TextStyle(color: indicatorColor, fontWeight: FontWeight.bold),
         ),
+        // ✅ --- الجزء المضاف ---
+        // جعل العنصر قابلاً للضغط للانتقال لشاشة التفاصيل
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => BookingDetailsView(booking: booking),
+            ),
+          );
+        },
       ),
     );
   }
