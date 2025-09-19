@@ -78,7 +78,7 @@ class RoomDetailsView extends StatelessWidget {
                   const SizedBox(height: 16),
                   _buildDetailRow(
                     'Rent',
-                    '${room.rentAmount.toStringAsFixed(2)} EGP / month',
+                    '${room.rentAmount.toStringAsFixed(2)} SAR / month',
                   ),
                   const SizedBox(height: 16),
                   _buildDetailRow('Area', '${room.area ?? 0} m²'),
@@ -107,7 +107,7 @@ class RoomDetailsView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Text(
-                          'Tenant Info',
+                          'معلومات المستأجر',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -115,9 +115,9 @@ class RoomDetailsView extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 12),
-                        _buildDetailRow('Name', room.tenantName!),
+                        _buildDetailRow('الاسم', room.tenantName!),
                         const SizedBox(height: 8),
-                        _buildDetailRow('Phone', room.tenantPhone ?? '-'),
+                        _buildDetailRow('الهاتف', room.tenantPhone ?? '-'),
                         const SizedBox(height: 12),
                         Row(
                           children: [
@@ -126,7 +126,7 @@ class RoomDetailsView extends StatelessWidget {
                                 // TODO: اتصال مباشر
                               },
                               icon: const Icon(Icons.phone),
-                              label: const Text('Call'),
+                              label: const Text('اتصل'),
                             ),
                             const SizedBox(width: 12),
                             ElevatedButton.icon(
@@ -134,7 +134,7 @@ class RoomDetailsView extends StatelessWidget {
                                 // TODO: إرسال رسالة
                               },
                               icon: const Icon(Icons.message),
-                              label: const Text('Message'),
+                              label: const Text('رسالة'),
                             ),
                           ],
                         ),
@@ -144,7 +144,7 @@ class RoomDetailsView extends StatelessWidget {
 
                   // 💰 قسم المدفوعات
                   const Text(
-                    'Payments',
+                    'المدفوعات',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -160,14 +160,14 @@ class RoomDetailsView extends StatelessWidget {
                         onPressed: () {
                           // TODO: تحصيل الإيجار
                         },
-                        child: const Text('Collect Rent'),
+                        child: const Text('تحصيل الإيجار'),
                       ),
                       const SizedBox(width: 12),
                       OutlinedButton(
                         onPressed: () {
                           // TODO: تذكير المستأجر
                         },
-                        child: const Text('Send Reminder'),
+                        child: const Text('تذكير المستأجر'),
                       ),
                     ],
                   ),
@@ -178,7 +178,7 @@ class RoomDetailsView extends StatelessWidget {
 
                   // 🔧 قسم الصيانة
                   const Text(
-                    'Maintenance',
+                    'الصيانة',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -192,7 +192,7 @@ class RoomDetailsView extends StatelessWidget {
                     onPressed: () {
                       // TODO: جدولة صيانة
                     },
-                    child: const Text('Schedule Maintenance'),
+                    child: const Text('جدولة الصيانة'),
                   ),
 
                   const SizedBox(height: 24),
@@ -201,7 +201,7 @@ class RoomDetailsView extends StatelessWidget {
 
                   // 📂 المرفقات
                   const Text(
-                    'Attachments',
+                    ' المرفقات',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -212,12 +212,9 @@ class RoomDetailsView extends StatelessWidget {
                   Wrap(
                     spacing: 12,
                     children: [
-                      _buildAttachmentCard(
-                        Icons.picture_as_pdf,
-                        'Contract.pdf',
-                      ),
-                      _buildAttachmentCard(Icons.image, 'Before.jpg'),
-                      _buildAttachmentCard(Icons.image, 'After.jpg'),
+                      _buildAttachmentCard(Icons.picture_as_pdf, 'عقد.pdf'),
+                      _buildAttachmentCard(Icons.image, 'قبل.jpg'),
+                      _buildAttachmentCard(Icons.image, 'بعد.jpg'),
                     ],
                   ),
                 ],
@@ -252,9 +249,9 @@ class RoomDetailsView extends StatelessWidget {
 
   Widget _buildPaymentsTable() {
     final dummyPayments = [
-      {'date': '2025-09-01', 'amount': '4500 EGP', 'status': 'Paid'},
-      {'date': '2025-08-01', 'amount': '4500 EGP', 'status': 'Paid'},
-      {'date': '2025-07-01', 'amount': '4500 EGP', 'status': 'Late'},
+      {'date': '2025-09-01', 'amount': '4500 ريال سعودي', 'status': 'مدفوع'},
+      {'date': '2025-08-01', 'amount': '4500 ريال سعودي', 'status': 'مدفوع'},
+      {'date': '2025-07-01', 'amount': '4500 ريال سعودي', 'status': 'متأخر'},
     ];
 
     return Table(

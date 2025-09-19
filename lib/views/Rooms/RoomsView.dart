@@ -283,7 +283,7 @@ class _RoomsViewState extends State<RoomsView> {
           ],
         ),
         const SizedBox(height: 12),
-        Text("Price Range: ${minPrice.round()} - ${maxPrice.round()} EGP"),
+        Text("Price Range: ${minPrice.round()} - ${maxPrice.round()} SAR"),
         RangeSlider(
           values: RangeValues(minPrice, maxPrice),
           min: 2000,
