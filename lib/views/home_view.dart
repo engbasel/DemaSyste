@@ -18,10 +18,23 @@ class _HomeViewState extends State<HomeView> {
 
   // List of widgets to display based on the selected index
   static const List<Widget> _widgetOptions = <Widget>[
+    // اللوحة الرئيسية
     DashboardContent(),
+    // التقويم
     CalendarView(),
+    // الحجوزات
     BookingsView(),
+
+    // الوحدات العقارية
     RoomsView(),
+
+    // إدارة المستأجرين
+    ResidentsView(),
+    // طلبات الصيانة
+    MaintenanceRequestsView(),
+
+    // التقارير المالية
+    FinancialReportsView(),
     SettingsView(),
   ];
 
@@ -69,5 +82,32 @@ class _HomeViewState extends State<HomeView> {
         },
       ),
     );
+  }
+}
+
+class MaintenanceRequestsView extends StatelessWidget {
+  const MaintenanceRequestsView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(body: Center(child: Text('طلبات الصيانة')));
+  }
+}
+
+class ResidentsView extends StatelessWidget {
+  const ResidentsView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(body: Center(child: Text('إدارة المستأجرين')));
+  }
+}
+
+class FinancialReportsView extends StatelessWidget {
+  const FinancialReportsView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(body: Center(child: Text('التقارير المالية')));
   }
 }

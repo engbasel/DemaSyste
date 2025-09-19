@@ -1,3 +1,4 @@
+import 'package:dema/views/Navbar/NavItem.dart';
 import 'package:flutter/material.dart';
 
 class SideNavigationBar extends StatelessWidget {
@@ -12,10 +13,16 @@ class SideNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ✅ --- الجزء الذي تم إصلاحه ---
+    // تم نقل اللون إلى داخل الـ BoxDecoration
     return Container(
       width: 250,
-      color: Colors.white,
       padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+      decoration: BoxDecoration(
+        color: Colors.white, // اللون الآن هنا
+        border: Border(right: BorderSide(color: Colors.grey.shade200)),
+      ),
+      // --- نهاية الجزء الذي تم إصلاحه ---
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -33,7 +40,7 @@ class SideNavigationBar extends StatelessWidget {
                 ),
                 const SizedBox(width: 12),
                 const Text(
-                  'StayEasy',
+                  'مؤسسة ديما',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
@@ -43,89 +50,65 @@ class SideNavigationBar extends StatelessWidget {
               ],
             ),
           ),
-          _NavItem(
+
+          // --- Main Navigation ---
+          NavItem(
             icon: Icons.dashboard_rounded,
             title: 'اللوحة الرئيسية',
             isSelected: selectedIndex == 0,
             onTap: () => onItemSelected(0),
           ),
-          _NavItem(
+          NavItem(
             icon: Icons.calendar_today_rounded,
             title: 'التقويم',
             isSelected: selectedIndex == 1,
             onTap: () => onItemSelected(1),
           ),
-          _NavItem(
+          NavItem(
             icon: Icons.book_online_rounded,
             title: 'الحجوزات',
             isSelected: selectedIndex == 2,
             onTap: () => onItemSelected(2),
           ),
-          _NavItem(
-            icon: Icons.room_service_rounded,
-            title: 'الغرف',
+          NavItem(
+            icon: Icons.maps_home_work_rounded, // أيقونة محسنة
+            title: 'الوحدات العقارية', // اسم محسن
             isSelected: selectedIndex == 3,
             onTap: () => onItemSelected(3),
           ),
-          const Spacer(),
-          _NavItem(
-            icon: Icons.settings_rounded,
-            title: 'الاعدادات',
+
+          const Divider(indent: 16, endIndent: 16, height: 24),
+
+          // --- ✅ أقسام الإدارة الجديدة ---
+          NavItem(
+            icon: Icons.people_alt_rounded,
+            title: 'إدارة المستأجرين',
             isSelected: selectedIndex == 4,
             onTap: () => onItemSelected(4),
           ),
+          NavItem(
+            icon: Icons.build_rounded,
+            title: 'طلبات الصيانة',
+            isSelected: selectedIndex == 5,
+            onTap: () => onItemSelected(5),
+          ),
+          NavItem(
+            icon: Icons.assessment_rounded,
+            title: 'التقارير المالية',
+            isSelected: selectedIndex == 6,
+            onTap: () => onItemSelected(6),
+          ),
+
+          const Spacer(),
+
+          // --- الإعدادات ---
+          NavItem(
+            icon: Icons.settings_rounded,
+            title: 'الإعدادات',
+            isSelected: selectedIndex == 7, // تم تحديث الرقم
+            onTap: () => onItemSelected(7),
+          ),
         ],
-      ),
-    );
-  }
-}
-
-class _NavItem extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  final bool isSelected;
-  final VoidCallback onTap;
-
-  const _NavItem({
-    required this.icon,
-    required this.title,
-    required this.isSelected,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(8),
-      child: Container(
-        margin: const EdgeInsets.only(bottom: 8),
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-        decoration: BoxDecoration(
-          color: isSelected ? const Color(0xFFEFF6FF) : Colors.transparent,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Row(
-          children: [
-            Icon(
-              icon,
-              color: isSelected
-                  ? const Color(0xFF2563EB)
-                  : const Color(0xFF64748B),
-              size: 20,
-            ),
-            const SizedBox(width: 16),
-            Text(
-              title,
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-                color: isSelected
-                    ? const Color(0xFF2563EB)
-                    : const Color(0xFF334155),
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }
