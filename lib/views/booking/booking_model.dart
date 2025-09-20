@@ -78,7 +78,7 @@ final List<Booking> dummyBookings = [
     roomNumber: "205",
     roomType: "غرفة قياسية",
     checkInDate: DateTime(2025, 9, 19),
-    checkOutDate: DateTime(2025, 9, 21),
+    checkOutDate: DateTime(2025, 9, 20),
     bookingType: BookingType.walkIn,
     totalPrice: 2400.0,
     amountPaid: 1000.0,
