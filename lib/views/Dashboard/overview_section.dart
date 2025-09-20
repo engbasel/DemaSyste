@@ -6,6 +6,7 @@ class OverviewSection extends StatelessWidget {
   const OverviewSection({super.key});
   @override
   Widget build(BuildContext context) {
+    final isSmall = MediaQuery.of(context).size.width < 600;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -18,45 +19,40 @@ class OverviewSection extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 16),
-        LayoutBuilder(
-          builder: (context, constraints) {
-            // Simple responsive grid
-            final isSmall = constraints.maxWidth < 600;
-            return GridView.count(
-              crossAxisCount: isSmall ? 2 : 4,
-              crossAxisSpacing: 16,
-              mainAxisSpacing: 16,
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              childAspectRatio: isSmall ? 1.5 : 1.8,
-              children: const [
-                StatCard(
-                  title: 'الحجوزات',
-                  value: '250',
-                  change: '+10%',
-                  isPositive: true,
-                ),
-                StatCard(
-                  title: 'الإيرادات',
-                  value: '\$15,000',
-                  change: '+5%',
-                  isPositive: true,
-                ),
-                StatCard(
-                  title: 'الإحصائيات',
-                  value: '75%',
-                  change: '-2%',
-                  isPositive: false,
-                ),
-                StatCard(
-                  title: 'مدة البقاء المتوسطة',
-                  value: '3.5 أيام',
-                  change: '+1%',
-                  isPositive: true,
-                ),
-              ],
-            );
-          },
+
+        GridView.count(
+          crossAxisCount: isSmall ? 2 : 4,
+          crossAxisSpacing: 16,
+          mainAxisSpacing: 16,
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          childAspectRatio: isSmall ? 1 : 1.3, // ✅ ارتفاع أكتر
+          children: const [
+            StatCard(
+              title: 'الحجوزات',
+              value: '250',
+              change: '+10%',
+              isPositive: true,
+            ),
+            StatCard(
+              title: 'الإيرادات',
+              value: '\$15,000',
+              change: '+5%',
+              isPositive: true,
+            ),
+            StatCard(
+              title: 'الإحصائيات',
+              value: '75%',
+              change: '-2%',
+              isPositive: false,
+            ),
+            StatCard(
+              title: 'مدة البقاء المتوسطة',
+              value: '3.5 أيام',
+              change: '+1%',
+              isPositive: true,
+            ),
+          ],
         ),
       ],
     );
